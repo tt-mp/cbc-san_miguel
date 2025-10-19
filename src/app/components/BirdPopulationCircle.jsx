@@ -38,7 +38,7 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
 
   return (
     <>
-      {tooltipVisible && (show2022 || show2024) && (
+      {tooltipVisible && show2022 && show2024 && (
         <div
           className="fixed z-[9999] min-w-[200px] p-2.5 pointer-events-none shadow-lg"
           style={{
@@ -113,11 +113,25 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
         {/* Show circles when at least one year is toggled */}
         {show2022 || show2024 ? (
           <>
+            {/* Bird name at top */}
+            <Text
+              size="1"
+              align="center"
+              className="leading-tight break-words hyphens-auto mb-1"
+              style={{ color: "var(--foreground)" }}
+            >
+              {show2022 && !show2024
+                ? `${species.count_2022} ${species.name}`
+                : !show2022 && show2024
+                ? `${species.count_2024} ${species.name}`
+                : species.name}
+            </Text>
+
             <Box
               onMouseMove={handleMouseMove}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="w-[70%] aspect-square mb-1 mx-auto"
+              className="w-[70%] aspect-square mx-auto"
             >
               <svg
                 viewBox={`0 0 ${viewBoxSize} ${viewBoxSize}`}
@@ -194,16 +208,6 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                 )}
               </svg>
             </Box>
-
-            {/* Bird name at bottom */}
-            <Text
-              size="1"
-              align="center"
-              className="leading-tight break-words hyphens-auto"
-              style={{ color: "var(--foreground)" }}
-            >
-              {species.name}
-            </Text>
           </>
         ) : (
           /* Neither year - just show name */
