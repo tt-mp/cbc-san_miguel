@@ -75,7 +75,8 @@ export default function Landing() {
               display: "flex",
               alignItems: "center",
               opacity: 0.6,
-              transition: "opacity 0.2s ease"
+              transition: "opacity 0.2s ease",
+              marginLeft: "0.5rem"
             }}
             onMouseEnter={(e) => e.currentTarget.style.opacity = "1"}
             onMouseLeave={(e) => e.currentTarget.style.opacity = "0.6"}
