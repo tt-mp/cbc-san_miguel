@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFF; /* Soft warm white/cream */
+  --foreground: #1A1A1A; /* Rich black */
+  --circle-outer: #E91E63; /* Vibrant hot pink (from the tapestry) */
+  --circle-inner: #FFA726; /* Bright orange (from the patterns) */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p, span, div, h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+}

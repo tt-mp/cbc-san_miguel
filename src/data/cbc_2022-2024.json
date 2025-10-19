@@ -1,0 +1,1021 @@
+{
+  "survey_info": {
+    "location": "San Miguel de Allende, Mexico",
+    "survey_dates": {
+      "initial": "2022-01-05",
+      "followup": "2024-01-04"
+    },
+    "total_species": 113,
+    "total_birds_observed": {
+      "2022": 1262,
+      "2024": 1936,
+      "change": 674,
+      "percent_change": 53.4
+    },
+    "context": "Data collected during drought conditions affecting central Mexico",
+    "effort_hours": {
+      "2022": 4,
+      "2024": 4
+    },
+    "metric": "birds_per_party_hour",
+    "metric_description": "All counts normalized to birds observed per party-hour of survey effort. Count values represent actual number of individuals observed during the 4-hour survey period."
+  },
+  "categories": [
+    {
+      "category_id": 1,
+      "name": "Wetland & Aquatic Birds",
+      "color": "#2196F3",
+      "description": "Herons, egrets, ibises, grebes, coots, rails, and wetland-dependent species",
+      "habitat_association": "Permanent water bodies, marshes, wetland edges, emergent vegetation",
+      "total_per_hour_2022": 85.5,
+      "total_per_hour_2024": 292,
+      "total_count_2022": 342,
+      "total_count_2024": 1168,
+      "percent_change": 242,
+      "species_count": 15,
+      "species": [
+        {
+          "name": "Great Blue Heron",
+          "count_2022": 6,
+          "count_2024": 1,
+          "per_hour_2022": 1.5,
+          "per_hour_2024": 0.25,
+          "change": -1.25
+        },
+        {
+          "name": "Great Egret",
+          "count_2022": 26,
+          "count_2024": 4,
+          "per_hour_2022": 6.5,
+          "per_hour_2024": 1,
+          "change": -5.5
+        },
+        {
+          "name": "Snowy Egret",
+          "count_2022": 10,
+          "count_2024": 4,
+          "per_hour_2022": 2.5,
+          "per_hour_2024": 1,
+          "change": -1.5
+        },
+        {
+          "name": "Cattle Egret",
+          "count_2022": 85,
+          "count_2024": 0,
+          "per_hour_2022": 21.25,
+          "per_hour_2024": 0,
+          "change": -21.25
+        },
+        {
+          "name": "Cattle Egret (Western)",
+          "count_2022": 0,
+          "count_2024": 90,
+          "per_hour_2022": 0,
+          "per_hour_2024": 22.5,
+          "change": 22.5
+        },
+        {
+          "name": "Black-crowned Night-Heron",
+          "count_2022": 3,
+          "count_2024": 1,
+          "per_hour_2022": 0.75,
+          "per_hour_2024": 0.25,
+          "change": -0.5
+        },
+        {
+          "name": "Tricolored Heron",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "White-faced Ibis",
+          "count_2022": 124,
+          "count_2024": 1064,
+          "per_hour_2022": 31,
+          "per_hour_2024": 266,
+          "change": 235
+        },
+        {
+          "name": "Least Grebe",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "Pied-billed Grebe",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "American Coot",
+          "count_2022": 18,
+          "count_2024": 2,
+          "per_hour_2022": 4.5,
+          "per_hour_2024": 0.5,
+          "change": -4
+        },
+        {
+          "name": "Common Gallinule",
+          "count_2022": 4,
+          "count_2024": 1,
+          "per_hour_2022": 1,
+          "per_hour_2024": 0.25,
+          "change": -0.75
+        },
+        {
+          "name": "Marsh Wren (plesius Group)",
+          "count_2022": 0,
+          "count_2024": 1,
+          "per_hour_2022": 0,
+          "per_hour_2024": 0.25,
+          "change": 0.25
+        },
+        {
+          "name": "Red-winged Blackbird (Red-winged)",
+          "count_2022": 62,
+          "count_2024": 0,
+          "per_hour_2022": 15.5,
+          "per_hour_2024": 0,
+          "change": -15.5
+        },
+        {
+          "name": "Common Yellowthroat (occidentalis Group)",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        }
+      ]
+    },
+    {
+      "category_id": 2,
+      "name": "Shorebirds",
+      "color": "#26A69A",
+      "description": "Sandpipers, plovers, gulls, and other birds of mudflats and shallow water edges",
+      "habitat_association": "Mudflats, exposed shorelines, shallow water margins",
+      "total_per_hour_2022": 88.5,
+      "total_per_hour_2024": 7.75,
+      "total_count_2022": 354,
+      "total_count_2024": 31,
+      "percent_change": -91,
+      "species_count": 9,
+      "species": [
+        {
+          "name": "Black-necked Stilt",
+          "count_2022": 23,
+          "count_2024": 8,
+          "per_hour_2022": 5.75,
+          "per_hour_2024": 2,
+          "change": -3.75
+        },
+        {
+          "name": "American Avocet",
+          "count_2022": 6,
+          "count_2024": 6,
+          "per_hour_2022": 1.5,
+          "per_hour_2024": 1.5,
+          "change": 0
+        },
+        {
+          "name": "Killdeer",
+          "count_2022": 13,
+          "count_2024": 1,
+          "per_hour_2022": 3.25,
+          "per_hour_2024": 0.25,
+          "change": -3
+        },
+        {
+          "name": "Spotted Sandpiper",
+          "count_2022": 4,
+          "count_2024": 1,
+          "per_hour_2022": 1,
+          "per_hour_2024": 0.25,
+          "change": -0.75
+        },
+        {
+          "name": "Least Sandpiper",
+          "count_2022": 7,
+          "count_2024": 1,
+          "per_hour_2022": 1.75,
+          "per_hour_2024": 0.25,
+          "change": -1.5
+        },
+        {
+          "name": "Western Sandpiper",
+          "count_2022": 276,
+          "count_2024": 8,
+          "per_hour_2022": 69,
+          "per_hour_2024": 2,
+          "change": -67
+        },
+        {
+          "name": "Long-billed Dowitcher",
+          "count_2022": 23,
+          "count_2024": 6,
+          "per_hour_2022": 5.75,
+          "per_hour_2024": 1.5,
+          "change": -4.25
+        },
+        {
+          "name": "Lesser Yellowlegs",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "Ring-billed Gull",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        }
+      ]
+    },
+    {
+      "category_id": 3,
+      "name": "Waterfowl",
+      "color": "#5E35B1",
+      "description": "Ducks, geese, and related swimming birds",
+      "habitat_association": "Open water, lakes, ponds, agricultural flooding",
+      "total_per_hour_2022": 47.5,
+      "total_per_hour_2024": 40.75,
+      "total_count_2022": 190,
+      "total_count_2024": 163,
+      "percent_change": -14,
+      "species_count": 10,
+      "species": [
+        {
+          "name": "Gadwall",
+          "count_2022": 0,
+          "count_2024": 6,
+          "per_hour_2022": 0,
+          "per_hour_2024": 1.5,
+          "change": 1.5
+        },
+        {
+          "name": "American Wigeon",
+          "count_2022": 0,
+          "count_2024": 6,
+          "per_hour_2022": 0,
+          "per_hour_2024": 1.5,
+          "change": 1.5
+        },
+        {
+          "name": "Mallard (Mexican)",
+          "count_2022": 15,
+          "count_2024": 68,
+          "per_hour_2022": 3.75,
+          "per_hour_2024": 17,
+          "change": 13.25
+        },
+        {
+          "name": "Blue-winged Teal",
+          "count_2022": 30,
+          "count_2024": 18,
+          "per_hour_2022": 7.5,
+          "per_hour_2024": 4.5,
+          "change": -3
+        },
+        {
+          "name": "Cinnamon Teal",
+          "count_2022": 6,
+          "count_2024": 2,
+          "per_hour_2022": 1.5,
+          "per_hour_2024": 0.5,
+          "change": -1
+        },
+        {
+          "name": "Northern Shoveler",
+          "count_2022": 52,
+          "count_2024": 25,
+          "per_hour_2022": 13,
+          "per_hour_2024": 6.25,
+          "change": -6.75
+        },
+        {
+          "name": "Northern Pintail",
+          "count_2022": 51,
+          "count_2024": 18,
+          "per_hour_2022": 12.75,
+          "per_hour_2024": 4.5,
+          "change": -8.25
+        },
+        {
+          "name": "Green-winged Teal",
+          "count_2022": 36,
+          "count_2024": 12,
+          "per_hour_2022": 9,
+          "per_hour_2024": 3,
+          "change": -6
+        },
+        {
+          "name": "Canvasback",
+          "count_2022": 0,
+          "count_2024": 1,
+          "per_hour_2022": 0,
+          "per_hour_2024": 0.25,
+          "change": 0.25
+        },
+        {
+          "name": "Ruddy Duck",
+          "count_2022": 0,
+          "count_2024": 7,
+          "per_hour_2022": 0,
+          "per_hour_2024": 1.75,
+          "change": 1.75
+        }
+      ]
+    },
+    {
+      "category_id": 4,
+      "name": "Fish-eating Specialists",
+      "color": "#00ACC1",
+      "description": "Pelicans, cormorants, osprey, and other piscivorous birds",
+      "habitat_association": "Deep water areas with fish populations",
+      "total_per_hour_2022": 5.25,
+      "total_per_hour_2024": 1,
+      "total_count_2022": 21,
+      "total_count_2024": 4,
+      "percent_change": -81,
+      "species_count": 3,
+      "species": [
+        {
+          "name": "American White Pelican",
+          "count_2022": 6,
+          "count_2024": 0,
+          "per_hour_2022": 1.5,
+          "per_hour_2024": 0,
+          "change": -1.5
+        },
+        {
+          "name": "Neotropic Cormorant",
+          "count_2022": 15,
+          "count_2024": 3,
+          "per_hour_2022": 3.75,
+          "per_hour_2024": 0.75,
+          "change": -3
+        },
+        {
+          "name": "Osprey",
+          "count_2022": 0,
+          "count_2024": 1,
+          "per_hour_2022": 0,
+          "per_hour_2024": 0.25,
+          "change": 0.25
+        }
+      ]
+    },
+    {
+      "category_id": 5,
+      "name": "Raptors",
+      "color": "#D32F2F",
+      "description": "Hawks, eagles, falcons, and other birds of prey (excluding fish specialists)",
+      "habitat_association": "Variable - from open country to woodland edges",
+      "total_per_hour_2022": 2,
+      "total_per_hour_2024": 3.5,
+      "total_count_2022": 8,
+      "total_count_2024": 14,
+      "percent_change": 75,
+      "species_count": 6,
+      "species": [
+        {
+          "name": "Northern Harrier",
+          "count_2022": 0,
+          "count_2024": 1,
+          "per_hour_2022": 0,
+          "per_hour_2024": 0.25,
+          "change": 0.25
+        },
+        {
+          "name": "Sharp-shinned Hawk",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "Cooper's Hawk",
+          "count_2022": 0,
+          "count_2024": 1,
+          "per_hour_2022": 0,
+          "per_hour_2024": 0.25,
+          "change": 0.25
+        },
+        {
+          "name": "Red-tailed Hawk",
+          "count_2022": 1,
+          "count_2024": 1,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0.25,
+          "change": 0
+        },
+        {
+          "name": "American Kestrel",
+          "count_2022": 5,
+          "count_2024": 11,
+          "per_hour_2022": 1.25,
+          "per_hour_2024": 2.75,
+          "change": 1.5
+        },
+        {
+          "name": "Peregrine Falcon (Peale's)",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        }
+      ]
+    },
+    {
+      "category_id": 6,
+      "name": "Scavengers",
+      "color": "#D84315",
+      "description": "Vultures and other carrion-eating birds",
+      "habitat_association": "Open areas for soaring, areas with carrion availability",
+      "total_per_hour_2022": 4,
+      "total_per_hour_2024": 1.75,
+      "total_count_2022": 16,
+      "total_count_2024": 7,
+      "percent_change": -56,
+      "species_count": 2,
+      "species": [
+        {
+          "name": "Black Vulture",
+          "count_2022": 9,
+          "count_2024": 5,
+          "per_hour_2022": 2.25,
+          "per_hour_2024": 1.25,
+          "change": -1
+        },
+        {
+          "name": "Turkey Vulture",
+          "count_2022": 7,
+          "count_2024": 2,
+          "per_hour_2022": 1.75,
+          "per_hour_2024": 0.5,
+          "change": -1.25
+        }
+      ]
+    },
+    {
+      "category_id": 7,
+      "name": "Urban-Associated Birds",
+      "color": "#FF6F00",
+      "description": "Species showing positive associations with human-modified habitats",
+      "habitat_association": "Urban areas, suburban gardens, human structures",
+      "total_per_hour_2022": 6,
+      "total_per_hour_2024": 22.25,
+      "total_count_2022": 24,
+      "total_count_2024": 89,
+      "percent_change": 271,
+      "species_count": 3,
+      "species": [
+        {
+          "name": "Inca Dove",
+          "count_2022": 9,
+          "count_2024": 5,
+          "per_hour_2022": 2.25,
+          "per_hour_2024": 1.25,
+          "change": -1
+        },
+        {
+          "name": "White-winged Dove",
+          "count_2022": 8,
+          "count_2024": 46,
+          "per_hour_2022": 2,
+          "per_hour_2024": 11.5,
+          "change": 9.5
+        },
+        {
+          "name": "House Finch",
+          "count_2022": 7,
+          "count_2024": 38,
+          "per_hour_2022": 1.75,
+          "per_hour_2024": 9.5,
+          "change": 7.75
+        }
+      ]
+    },
+    {
+      "category_id": 8,
+      "name": "Aerial Insectivores",
+      "color": "#EC407A",
+      "description": "Swallows and martins that catch insects in flight",
+      "habitat_association": "Open air spaces, often near water",
+      "total_per_hour_2022": 2.75,
+      "total_per_hour_2024": 0,
+      "total_count_2022": 11,
+      "total_count_2024": 0,
+      "percent_change": -100,
+      "species_count": 2,
+      "species": [
+        {
+          "name": "Northern Rough-winged Swallow",
+          "count_2022": 9,
+          "count_2024": 0,
+          "per_hour_2022": 2.25,
+          "per_hour_2024": 0,
+          "change": -2.25
+        },
+        {
+          "name": "Cave Swallow (Texas)",
+          "count_2022": 2,
+          "count_2024": 0,
+          "per_hour_2022": 0.5,
+          "per_hour_2024": 0,
+          "change": -0.5
+        }
+      ]
+    },
+    {
+      "category_id": 9,
+      "name": "Open Habitat Birds",
+      "color": "#F9A825",
+      "description": "Species of grasslands, agricultural areas, and desert scrub",
+      "habitat_association": "Grasslands, agricultural fields, desert scrub, sparse vegetation",
+      "total_per_hour_2022": 25,
+      "total_per_hour_2024": 25.25,
+      "total_count_2022": 100,
+      "total_count_2024": 101,
+      "percent_change": 1,
+      "species_count": 17,
+      "species": [
+        {
+          "name": "Loggerhead Shrike",
+          "count_2022": 1,
+          "count_2024": 1,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0.25,
+          "change": 0
+        },
+        {
+          "name": "Verdin",
+          "count_2022": 1,
+          "count_2024": 4,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 1,
+          "change": 0.75
+        },
+        {
+          "name": "Cactus Wren",
+          "count_2022": 5,
+          "count_2024": 6,
+          "per_hour_2022": 1.25,
+          "per_hour_2024": 1.5,
+          "change": 0.25
+        },
+        {
+          "name": "Curve-billed Thrasher",
+          "count_2022": 8,
+          "count_2024": 9,
+          "per_hour_2022": 2,
+          "per_hour_2024": 2.25,
+          "change": 0.25
+        },
+        {
+          "name": "American Pipit",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "Phainopepla",
+          "count_2022": 2,
+          "count_2024": 1,
+          "per_hour_2022": 0.5,
+          "per_hour_2024": 0.25,
+          "change": -0.25
+        },
+        {
+          "name": "Pyrrhuloxia",
+          "count_2022": 0,
+          "count_2024": 1,
+          "per_hour_2022": 0,
+          "per_hour_2024": 0.25,
+          "change": 0.25
+        },
+        {
+          "name": "Lark Sparrow",
+          "count_2022": 45,
+          "count_2024": 16,
+          "per_hour_2022": 11.25,
+          "per_hour_2024": 4,
+          "change": -7.25
+        },
+        {
+          "name": "Chipping Sparrow",
+          "count_2022": 1,
+          "count_2024": 9,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 2.25,
+          "change": 2
+        },
+        {
+          "name": "Clay-colored Sparrow",
+          "count_2022": 20,
+          "count_2024": 32,
+          "per_hour_2022": 5,
+          "per_hour_2024": 8,
+          "change": 3
+        },
+        {
+          "name": "Savannah Sparrow",
+          "count_2022": 0,
+          "count_2024": 5,
+          "per_hour_2022": 0,
+          "per_hour_2024": 1.25,
+          "change": 1.25
+        },
+        {
+          "name": "Lincoln's Sparrow",
+          "count_2022": 0,
+          "count_2024": 2,
+          "per_hour_2022": 0,
+          "per_hour_2024": 0.5,
+          "change": 0.5
+        },
+        {
+          "name": "Canyon Towhee",
+          "count_2022": 9,
+          "count_2024": 3,
+          "per_hour_2022": 2.25,
+          "per_hour_2024": 0.75,
+          "change": -1.5
+        },
+        {
+          "name": "White-collared Seedeater (Cinnamon-rumped)",
+          "count_2022": 2,
+          "count_2024": 4,
+          "per_hour_2022": 0.5,
+          "per_hour_2024": 1,
+          "change": 0.5
+        },
+        {
+          "name": "Indigo Bunting",
+          "count_2022": 0,
+          "count_2024": 2,
+          "per_hour_2022": 0,
+          "per_hour_2024": 0.5,
+          "change": 0.5
+        },
+        {
+          "name": "Varied Bunting",
+          "count_2022": 1,
+          "count_2024": 2,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0.5,
+          "change": 0.25
+        },
+        {
+          "name": "House Sparrow",
+          "count_2022": 4,
+          "count_2024": 4,
+          "per_hour_2022": 1,
+          "per_hour_2024": 1,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "category_id": 10,
+      "name": "Forest & Edge Birds",
+      "color": "#43A047",
+      "description": "Woodland species including woodpeckers, warblers, and forest songbirds",
+      "habitat_association": "Deciduous forest, mixed forest, woodland edges",
+      "total_per_hour_2022": 34.25,
+      "total_per_hour_2024": 44.25,
+      "total_count_2022": 137,
+      "total_count_2024": 177,
+      "percent_change": 29,
+      "species_count": 23,
+      "species": [
+        {
+          "name": "Broad-billed Hummingbird",
+          "count_2022": 7,
+          "count_2024": 9,
+          "per_hour_2022": 1.75,
+          "per_hour_2024": 2.25,
+          "change": 0.5
+        },
+        {
+          "name": "Violet-crowned Hummingbird",
+          "count_2022": 1,
+          "count_2024": 1,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0.25,
+          "change": 0
+        },
+        {
+          "name": "Golden-fronted Woodpecker",
+          "count_2022": 14,
+          "count_2024": 24,
+          "per_hour_2022": 3.5,
+          "per_hour_2024": 6,
+          "change": 2.5
+        },
+        {
+          "name": "Ladder-backed Woodpecker",
+          "count_2022": 2,
+          "count_2024": 2,
+          "per_hour_2022": 0.5,
+          "per_hour_2024": 0.5,
+          "change": 0
+        },
+        {
+          "name": "Black Phoebe",
+          "count_2022": 13,
+          "count_2024": 9,
+          "per_hour_2022": 3.25,
+          "per_hour_2024": 2.25,
+          "change": -1
+        },
+        {
+          "name": "Say's Phoebe",
+          "count_2022": 0,
+          "count_2024": 5,
+          "per_hour_2022": 0,
+          "per_hour_2024": 1.25,
+          "change": 1.25
+        },
+        {
+          "name": "Vermilion Flycatcher",
+          "count_2022": 14,
+          "count_2024": 25,
+          "per_hour_2022": 3.5,
+          "per_hour_2024": 6.25,
+          "change": 2.75
+        },
+        {
+          "name": "Ash-throated Flycatcher",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "Cassin's Kingbird",
+          "count_2022": 11,
+          "count_2024": 7,
+          "per_hour_2022": 2.75,
+          "per_hour_2024": 1.75,
+          "change": -1
+        },
+        {
+          "name": "Great Kiskadee",
+          "count_2022": 17,
+          "count_2024": 10,
+          "per_hour_2022": 4.25,
+          "per_hour_2024": 2.5,
+          "change": -1.75
+        },
+        {
+          "name": "Bushtit",
+          "count_2022": 18,
+          "count_2024": 10,
+          "per_hour_2022": 4.5,
+          "per_hour_2024": 2.5,
+          "change": -2
+        },
+        {
+          "name": "Bushtit (Black-eared)",
+          "count_2022": 0,
+          "count_2024": 9,
+          "per_hour_2022": 0,
+          "per_hour_2024": 2.25,
+          "change": 2.25
+        },
+        {
+          "name": "Bewick's Wren",
+          "count_2022": 3,
+          "count_2024": 8,
+          "per_hour_2022": 0.75,
+          "per_hour_2024": 2,
+          "change": 1.25
+        },
+        {
+          "name": "Blue-gray Gnatcatcher",
+          "count_2022": 10,
+          "count_2024": 11,
+          "per_hour_2022": 2.5,
+          "per_hour_2024": 2.75,
+          "change": 0.25
+        },
+        {
+          "name": "Ruby-crowned Kinglet",
+          "count_2022": 7,
+          "count_2024": 2,
+          "per_hour_2022": 1.75,
+          "per_hour_2024": 0.5,
+          "change": -1.25
+        },
+        {
+          "name": "Rufous-backed Robin",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "Lesser Goldfinch",
+          "count_2022": 7,
+          "count_2024": 1,
+          "per_hour_2022": 1.75,
+          "per_hour_2024": 0.25,
+          "change": -1.5
+        },
+        {
+          "name": "Orange-crowned Warbler",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "Nashville Warbler",
+          "count_2022": 2,
+          "count_2024": 1,
+          "per_hour_2022": 0.5,
+          "per_hour_2024": 0.25,
+          "change": -0.25
+        },
+        {
+          "name": "Wilson's Warbler",
+          "count_2022": 0,
+          "count_2024": 6,
+          "per_hour_2022": 0,
+          "per_hour_2024": 1.5,
+          "change": 1.5
+        },
+        {
+          "name": "Yellow-rumped Warbler",
+          "count_2022": 6,
+          "count_2024": 28,
+          "per_hour_2022": 1.5,
+          "per_hour_2024": 7,
+          "change": 5.5
+        },
+        {
+          "name": "Northern Cardinal",
+          "count_2022": 1,
+          "count_2024": 0,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 0,
+          "change": -0.25
+        },
+        {
+          "name": "Blue Grosbeak",
+          "count_2022": 1,
+          "count_2024": 9,
+          "per_hour_2022": 0.25,
+          "per_hour_2024": 2.25,
+          "change": 2
+        }
+      ]
+    },
+    {
+      "category_id": 11,
+      "name": "Generalist Omnivores",
+      "color": "#AB47BC",
+      "description": "Corvids, grackles, cowbirds, orioles, and other highly adaptable species",
+      "habitat_association": "Multiple habitats - highly flexible",
+      "total_per_hour_2022": 9.5,
+      "total_per_hour_2024": 36,
+      "total_count_2022": 38,
+      "total_count_2024": 144,
+      "percent_change": 279,
+      "species_count": 5,
+      "species": [
+        {
+          "name": "Common Raven",
+          "count_2022": 21,
+          "count_2024": 14,
+          "per_hour_2022": 5.25,
+          "per_hour_2024": 3.5,
+          "change": -1.75
+        },
+        {
+          "name": "Chihuahuan Raven",
+          "count_2022": 0,
+          "count_2024": 110,
+          "per_hour_2022": 0,
+          "per_hour_2024": 27.5,
+          "change": 27.5
+        },
+        {
+          "name": "Great-tailed Grackle",
+          "count_2022": 8,
+          "count_2024": 5,
+          "per_hour_2022": 2,
+          "per_hour_2024": 1.25,
+          "change": -0.75
+        },
+        {
+          "name": "Hooded Oriole",
+          "count_2022": 2,
+          "count_2024": 0,
+          "per_hour_2022": 0.5,
+          "per_hour_2024": 0,
+          "change": -0.5
+        },
+        {
+          "name": "Crested Caracara",
+          "count_2022": 7,
+          "count_2024": 15,
+          "per_hour_2022": 1.75,
+          "per_hour_2024": 3.75,
+          "change": 2
+        }
+      ]
+    }
+  ],
+  "ecological_summary": {
+    "major_trends": {
+      "winners": [
+        {
+          "category": "Wetland & Aquatic Birds",
+          "percent_change": 242,
+          "driver": "White-faced Ibis concentration in remaining water (but most wetland species declined)"
+        },
+        {
+          "category": "Generalist Omnivores",
+          "percent_change": 279,
+          "driver": "Chihuahuan Raven invasion taking advantage of stressed ecosystem"
+        },
+        {
+          "category": "Urban-Associated Birds",
+          "percent_change": 271,
+          "driver": "Urban areas as drought refugia with water/food"
+        },
+        {
+          "category": "Raptors",
+          "percent_change": 75,
+          "driver": "Increased prey visibility in drought conditions"
+        }
+      ],
+      "losers": [
+        {
+          "category": "Aerial Insectivores",
+          "percent_change": -100,
+          "driver": "Complete loss of aquatic insect emergence"
+        },
+        {
+          "category": "Shorebirds",
+          "percent_change": -91,
+          "driver": "Loss of mudflat and shallow water habitat"
+        },
+        {
+          "category": "Fish-eating Specialists",
+          "percent_change": -81,
+          "driver": "Fish die-off or concentration in inaccessible areas"
+        },
+        {
+          "category": "Scavengers",
+          "percent_change": -56,
+          "driver": "Possible reduction in carrion availability"
+        }
+      ]
+    },
+    "key_indicator_species": {
+      "drought_impact": [
+        "Western Sandpiper: 276 → 8 individuals (-97%)",
+        "Cattle Egret: 85 → 0 individuals (-100%)",
+        "Red-winged Blackbird: 62 → 0 individuals (-100%)",
+        "All swallow species: 11 → 0 individuals (-100%)"
+      ],
+      "drought_beneficiaries": [
+        "White-faced Ibis: 124 → 1,064 individuals (+758%)",
+        "Chihuahuan Raven: 0 → 110 individuals (new colonizer)",
+        "Mallard (Mexican): 15 → 68 individuals (+353%)",
+        "House Finch: 7 → 38 individuals (+443%)",
+        "White-winged Dove: 8 → 46 individuals (+475%)"
+      ]
+    },
+    "ecological_interpretation": "The data reveals severe drought impacts with fundamental wetland ecosystem changes. While White-faced Ibis concentrated at remaining water, most wetland species crashed including complete loss of Red-winged Blackbirds. The complete elimination of aerial insectivores indicates aquatic system collapse. Urban areas and generalist species benefited as drought refugia. The arrival of Chihuahuan Ravens suggests major ecosystem disruption allowing colonization by desert-adapted generalists. Overall bird counts increased 53.4% (1,262 to 1,936 individuals) despite species-level declines, driven by massive concentrations of ibises and colonizing ravens."
+  },
+  "data_notes": {
+    "species_count_verification": "113 total species across all categories confirmed",
+    "normalization_method": "All values expressed as birds per party-hour based on 4-hour survey effort each year",
+    "count_data": "Count values represent actual number of individual birds observed during the 4-hour survey period",
+    "cattle_egret_note": "Two entries likely represent subspecies change in recording between years",
+    "concentration_effect": "Overall count increase driven by concentration effects (White-faced Ibis, Chihuahuan Raven) rather than ecosystem health improvement"
+  }
+}
