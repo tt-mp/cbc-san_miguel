@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFF; /* Soft warm white/cream */
-  --foreground: #1A1A1A; /* Rich black */
-  --circle-outer: #E91E63; /* Vibrant hot pink (from the tapestry) */
-  --circle-inner: #FFA726; /* Bright orange (from the patterns) */
+  --background: #FAF9F6;
+  --foreground: #1A1A1A;
+  --circle-outer: #E84A5F;
+  --circle-inner: #F4A84E;
 }
 
 @theme inline {
@@ -15,10 +15,28 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not(.dark):not(.light) {
+    --background: #1a1a1a;
+    --foreground: #f5f5f5;
+    --circle-outer: #ff6b9d;
+    --circle-inner: #ffc470;
   }
+}
+
+/* Manual dark mode toggle - takes precedence */
+html.dark {
+  --background: #1a1a1a;
+  --foreground: #f5f5f5;
+  --circle-outer: #ff6b9d;
+  --circle-inner: #ffc470;
+}
+
+/* Manual light mode toggle - takes precedence */
+html.light {
+  --background: #FAF9F6;
+  --foreground: #1A1A1A;
+  --circle-outer: #E84A5F;
+  --circle-inner: #F4A84E;
 }
 
 body {

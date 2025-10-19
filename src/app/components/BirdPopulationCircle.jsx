@@ -132,79 +132,72 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               className="w-[70%] aspect-square mx-auto"
+              style={{ overflow: "hidden" }}
             >
               <svg
                 viewBox={`0 0 ${viewBoxSize} ${viewBoxSize}`}
                 className="w-full h-full block"
                 preserveAspectRatio="xMidYMid meet"
               >
-                {show2022 && show2024 ? (
-                  /* Both years - show overlapping circles */
+                {/* Always render both circles, use opacity and scale to show/hide */}
+                {scaledRadius2022 >= scaledRadius2024 ? (
                   <>
-                    {scaledRadius2022 >= scaledRadius2024 ? (
-                      <>
-                        {/* 2022 circle (larger, rendered first) */}
-                        {scaledRadius2022 > 0 && (
-                          <circle
-                            cx={centerPoint}
-                            cy={centerPoint}
-                            r={scaledRadius2022}
-                            fill="var(--circle-outer)"
-                          />
-                        )}
-                        {/* 2024 circle (smaller, rendered on top) */}
-                        {scaledRadius2024 > 0 && (
-                          <circle
-                            cx={centerPoint}
-                            cy={centerPoint}
-                            r={scaledRadius2024}
-                            fill="var(--circle-inner)"
-                          />
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        {/* 2024 circle (larger, rendered first) */}
-                        {scaledRadius2024 > 0 && (
-                          <circle
-                            cx={centerPoint}
-                            cy={centerPoint}
-                            r={scaledRadius2024}
-                            fill="var(--circle-inner)"
-                          />
-                        )}
-                        {/* 2022 circle (smaller, rendered on top) */}
-                        {scaledRadius2022 > 0 && (
-                          <circle
-                            cx={centerPoint}
-                            cy={centerPoint}
-                            r={scaledRadius2022}
-                            fill="var(--circle-outer)"
-                          />
-                        )}
-                      </>
-                    )}
-                  </>
-                ) : show2022 ? (
-                  /* Only 2022 - show just 2022 circle */
-                  scaledRadius2022 > 0 && (
+                    {/* 2022 circle (larger, rendered first) */}
                     <circle
                       cx={centerPoint}
                       cy={centerPoint}
-                      r={scaledRadius2022}
+                      r={scaledRadius2022 || 0.1}
                       fill="var(--circle-outer)"
+                      opacity={show2022 ? 1 : 0}
+                      transform={`scale(${show2022 ? 1 : 0})`}
+                      style={{
+                        transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                        transformOrigin: `${centerPoint}px ${centerPoint}px`
+                      }}
                     />
-                  )
-                ) : (
-                  /* Only 2024 - show just 2024 circle */
-                  scaledRadius2024 > 0 && (
+                    {/* 2024 circle (smaller, rendered on top) */}
                     <circle
                       cx={centerPoint}
                       cy={centerPoint}
-                      r={scaledRadius2024}
+                      r={scaledRadius2024 || 0.1}
                       fill="var(--circle-inner)"
+                      opacity={show2024 ? 1 : 0}
+                      transform={`scale(${show2024 ? 1 : 0})`}
+                      style={{
+                        transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                        transformOrigin: `${centerPoint}px ${centerPoint}px`
+                      }}
                     />
-                  )
+                  </>
+                ) : (
+                  <>
+                    {/* 2024 circle (larger, rendered first) */}
+                    <circle
+                      cx={centerPoint}
+                      cy={centerPoint}
+                      r={scaledRadius2024 || 0.1}
+                      fill="var(--circle-inner)"
+                      opacity={show2024 ? 1 : 0}
+                      transform={`scale(${show2024 ? 1 : 0})`}
+                      style={{
+                        transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                        transformOrigin: `${centerPoint}px ${centerPoint}px`
+                      }}
+                    />
+                    {/* 2022 circle (smaller, rendered on top) */}
+                    <circle
+                      cx={centerPoint}
+                      cy={centerPoint}
+                      r={scaledRadius2022 || 0.1}
+                      fill="var(--circle-outer)"
+                      opacity={show2022 ? 1 : 0}
+                      transform={`scale(${show2022 ? 1 : 0})`}
+                      style={{
+                        transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                        transformOrigin: `${centerPoint}px ${centerPoint}px`
+                      }}
+                    />
+                  </>
                 )}
               </svg>
             </Box>
