@@ -108,7 +108,7 @@ export default function Landing() {
                 flexShrink: 0
               }}
             />
-            <Text size="2" weight="medium">2022</Text>
+            <Text size="2" weight="medium">Jan 5, 2022</Text>
           </Flex>
 
           <Flex
@@ -130,7 +130,7 @@ export default function Landing() {
                 flexShrink: 0
               }}
             />
-            <Text size="2" weight="medium">2024</Text>
+            <Text size="2" weight="medium">Jan 4, 2024</Text>
           </Flex>
         </Flex>
       </Flex>
