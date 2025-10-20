@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm install @radix-ui/react-icons)",
       "Bash(npm run dev:*)",
-      "Bash(npm run lint)"
+      "Bash(npm run lint)",
+      "Bash(cat /Users/whiteprogramming/Documents/birding/cbc/src/data/cbc_2022-2024.json)"
     ],
     "deny": [],
     "ask": []

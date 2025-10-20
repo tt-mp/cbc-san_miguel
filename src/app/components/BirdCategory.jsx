@@ -27,7 +27,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
     .sort((a, b) => Math.abs(b.categoryChange) - Math.abs(a.categoryChange));
 
   // Hardcoded random column positions (1-5) with no adjacent duplicates
-  const columnPositions = [2, 4, 1, 5, 3, 1, 4, 2, 5, 3, 1];
+  const columnPositions = [2, 4, 1, 5, 3, 1, 4, 2, 5, 3, 1, 4];
 
   // State to track current bird index for each category
   const [currentIndices, setCurrentIndices] = useState(categories.map(() => 0));

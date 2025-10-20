@@ -23,16 +23,17 @@
   "categories": [
     {
       "category_id": 1,
-      "name": "Wetland & Aquatic Birds",
+      "name": "Wading Birds & Ibises",
       "color": "#2196F3",
-      "description": "Herons, egrets, ibises, grebes, coots, rails, and wetland-dependent species",
-      "habitat_association": "Permanent water bodies, marshes, wetland edges, emergent vegetation",
-      "total_per_hour_2022": 88.25,
-      "total_per_hour_2024": 293.25,
-      "total_count_2022": 353,
-      "total_count_2024": 1173,
-      "percent_change": 232,
-      "species_count": 20,
+      "description": "Long-legged birds that wade in shallow water to hunt fish and invertebrates",
+      "habitat_association": "Shallow water edges, mudflats, and wetland margins where they can stand and forage",
+      "drought_impact": "White-faced Ibis concentrated at remaining water (+758%), but most species declined as wetlands dried",
+      "total_per_hour_2022": 59.5,
+      "total_per_hour_2024": 291.75,
+      "total_count_2022": 238,
+      "total_count_2024": 1167,
+      "percent_change": 390,
+      "species_count": 8,
       "species": [
         {
           "name": "Great Blue Heron",
@@ -97,7 +98,23 @@
           "per_hour_2022": 31,
           "per_hour_2024": 266,
           "change": 235
-        },
+        }
+      ]
+    },
+    {
+      "category_id": 2,
+      "name": "Marsh & Wetland Edge Birds",
+      "color": "#26A69A",
+      "description": "Birds that live in dense wetland vegetation, cattail marshes, and along pond edges",
+      "habitat_association": "Emergent vegetation, reeds, cattails, and brushy wetland borders",
+      "drought_impact": "Complete loss of marsh specialists as wetland vegetation disappeared",
+      "total_per_hour_2022": 28.75,
+      "total_per_hour_2024": 1.5,
+      "total_count_2022": 115,
+      "total_count_2024": 6,
+      "percent_change": -95,
+      "species_count": 12,
+      "species": [
         {
           "name": "Least Grebe",
           "count_2022": 1,
@@ -185,23 +202,16 @@
           "per_hour_2022": 0,
           "per_hour_2024": 1.5,
           "change": 1.5
-        },
-        {
-          "name": "Song Sparrow",
-          "count_2022": 0,
-          "count_2024": 6,
-          "per_hour_2022": 0,
-          "per_hour_2024": 1.5,
-          "change": 1.5
         }
       ]
     },
     {
-      "category_id": 2,
+      "category_id": 3,
       "name": "Shorebirds",
-      "color": "#26A69A",
-      "description": "Sandpipers, plovers, gulls, and other birds of mudflats and shallow water edges",
-      "habitat_association": "Mudflats, exposed shorelines, shallow water margins",
+      "color": "#00ACC1",
+      "description": "Sandpipers, plovers, and other birds that probe mudflats and shallow water for invertebrates",
+      "habitat_association": "Exposed mudflats, wet sand, and shallow pond edges",
+      "drought_impact": "Dramatic 91% decline as mudflats dried up and disappeared",
       "total_per_hour_2022": 88.5,
       "total_per_hour_2024": 7.75,
       "total_count_2022": 354,
@@ -284,11 +294,12 @@
       ]
     },
     {
-      "category_id": 3,
-      "name": "Waterfowl",
+      "category_id": 4,
+      "name": "Ducks & Waterfowl",
       "color": "#5E35B1",
-      "description": "Ducks, geese, and related swimming birds",
-      "habitat_association": "Open water, lakes, ponds, agricultural flooding",
+      "description": "Swimming birds that feed on aquatic plants, seeds, and small animals in ponds and lakes",
+      "habitat_association": "Open water surfaces where they can swim, dive, and dabble",
+      "drought_impact": "Moderate decline as water bodies shrank, though some species found remaining ponds",
       "total_per_hour_2022": 47.5,
       "total_per_hour_2024": 42.25,
       "total_count_2022": 190,
@@ -387,11 +398,44 @@
       ]
     },
     {
-      "category_id": 4,
-      "name": "Fish-eating Specialists",
-      "color": "#00ACC1",
-      "description": "Pelicans, cormorants, osprey, and other piscivorous birds",
-      "habitat_association": "Deep water areas with fish populations",
+      "category_id": 5,
+      "name": "Swallows",
+      "color": "#EC407A",
+      "description": "Aerial acrobats that catch flying insects over water and open areas",
+      "habitat_association": "Open air above wetlands and ponds where aquatic insects emerge",
+      "drought_impact": "Complete disappearance - 100% loss as aquatic insect populations collapsed",
+      "total_per_hour_2022": 2.75,
+      "total_per_hour_2024": 0,
+      "total_count_2022": 11,
+      "total_count_2024": 0,
+      "percent_change": -100,
+      "species_count": 2,
+      "species": [
+        {
+          "name": "Northern Rough-winged Swallow",
+          "count_2022": 9,
+          "count_2024": 0,
+          "per_hour_2022": 2.25,
+          "per_hour_2024": 0,
+          "change": -2.25
+        },
+        {
+          "name": "Cave Swallow (Texas)",
+          "count_2022": 2,
+          "count_2024": 0,
+          "per_hour_2022": 0.5,
+          "per_hour_2024": 0,
+          "change": -0.5
+        }
+      ]
+    },
+    {
+      "category_id": 6,
+      "name": "Fish-eating Birds",
+      "color": "#00838F",
+      "description": "Pelicans, cormorants, and osprey that dive or plunge for fish",
+      "habitat_association": "Deep water areas with healthy fish populations",
+      "drought_impact": "Major 81% decline as fish died off or became inaccessible",
       "total_per_hour_2022": 5.25,
       "total_per_hour_2024": 1,
       "total_count_2022": 21,
@@ -426,11 +470,12 @@
       ]
     },
     {
-      "category_id": 5,
-      "name": "Raptors",
+      "category_id": 7,
+      "name": "Hawks & Falcons",
       "color": "#D32F2F",
-      "description": "Hawks, eagles, falcons, and other birds of prey (excluding fish specialists)",
-      "habitat_association": "Variable - from open country to woodland edges",
+      "description": "Daytime hunters that catch birds, rodents, and other small animals",
+      "habitat_association": "Open country, woodland edges, and areas with visible prey",
+      "drought_impact": "Increased 100% as prey became more visible in sparse vegetation",
       "total_per_hour_2022": 2,
       "total_per_hour_2024": 4,
       "total_count_2022": 8,
@@ -497,11 +542,12 @@
       ]
     },
     {
-      "category_id": 6,
-      "name": "Scavengers",
+      "category_id": 8,
+      "name": "Vultures",
       "color": "#D84315",
-      "description": "Vultures and other carrion-eating birds",
-      "habitat_association": "Open areas for soaring, areas with carrion availability",
+      "description": "Soaring scavengers that locate and feed on dead animals",
+      "habitat_association": "Open skies where they can spot carrion from above",
+      "drought_impact": "Declined 56% - possibly due to reduced carrion or increased competition",
       "total_per_hour_2022": 4,
       "total_per_hour_2024": 1.75,
       "total_count_2022": 16,
@@ -528,17 +574,18 @@
       ]
     },
     {
-      "category_id": 7,
-      "name": "Urban-Associated Birds",
+      "category_id": 9,
+      "name": "Urban & Garden Birds",
       "color": "#FF6F00",
-      "description": "Species showing positive associations with human-modified habitats",
-      "habitat_association": "Urban areas, suburban gardens, human structures",
+      "description": "Birds thriving in towns, suburbs, and areas with human activity",
+      "habitat_association": "Buildings, gardens, parks, and neighborhoods where water and food are available",
+      "drought_impact": "Surged 170% as birds sought refuge in towns with reliable water sources",
       "total_per_hour_2022": 10,
       "total_per_hour_2024": 27,
       "total_count_2022": 40,
       "total_count_2024": 108,
       "percent_change": 170,
-      "species_count": 5,
+      "species_count": 6,
       "species": [
         {
           "name": "Rock Pigeon (Feral Pigeon)",
@@ -591,48 +638,18 @@
       ]
     },
     {
-      "category_id": 8,
-      "name": "Aerial Insectivores",
-      "color": "#EC407A",
-      "description": "Swallows and martins that catch insects in flight",
-      "habitat_association": "Open air spaces, often near water",
-      "total_per_hour_2022": 2.75,
-      "total_per_hour_2024": 0,
-      "total_count_2022": 11,
-      "total_count_2024": 0,
-      "percent_change": -100,
-      "species_count": 2,
-      "species": [
-        {
-          "name": "Northern Rough-winged Swallow",
-          "count_2022": 9,
-          "count_2024": 0,
-          "per_hour_2022": 2.25,
-          "per_hour_2024": 0,
-          "change": -2.25
-        },
-        {
-          "name": "Cave Swallow (Texas)",
-          "count_2022": 2,
-          "count_2024": 0,
-          "per_hour_2022": 0.5,
-          "per_hour_2024": 0,
-          "change": -0.5
-        }
-      ]
-    },
-    {
-      "category_id": 9,
-      "name": "Open Habitat Birds",
+      "category_id": 10,
+      "name": "Grassland & Scrubland Birds",
       "color": "#8B6914",
-      "description": "Species of grasslands, agricultural areas, and desert scrub",
-      "habitat_association": "Grasslands, agricultural fields, desert scrub, sparse vegetation",
+      "description": "Birds of open country, farm fields, and areas with scattered shrubs and cacti",
+      "habitat_association": "Open ground with grasses, desert plants, and sparse vegetation",
+      "drought_impact": "Essentially stable at +4% - these species are adapted to dry conditions",
       "total_per_hour_2022": 27,
       "total_per_hour_2024": 28,
       "total_count_2022": 108,
       "total_count_2024": 112,
       "percent_change": 4,
-      "species_count": 22,
+      "species_count": 20,
       "species": [
         {
           "name": "Mourning Dove",
@@ -797,11 +814,12 @@
       ]
     },
     {
-      "category_id": 10,
-      "name": "Forest & Edge Birds",
+      "category_id": 11,
+      "name": "Woodland Birds",
       "color": "#43A047",
-      "description": "Woodland species including woodpeckers, warblers, and forest songbirds",
-      "habitat_association": "Deciduous forest, mixed forest, woodland edges",
+      "description": "Birds of trees, forests, and areas with dense vegetation and shade",
+      "habitat_association": "Trees, shrubs, and wooded areas that provide cover and nesting sites",
+      "drought_impact": "Slight increase of 31% - some species may have moved to remaining green areas",
       "total_per_hour_2022": 34.5,
       "total_per_hour_2024": 45.25,
       "total_count_2022": 138,
@@ -1028,11 +1046,12 @@
       ]
     },
     {
-      "category_id": 11,
-      "name": "Generalist Omnivores",
+      "category_id": 12,
+      "name": "Ravens & Opportunists",
       "color": "#AB47BC",
-      "description": "Corvids, grackles, cowbirds, orioles, and other highly adaptable species",
-      "habitat_association": "Multiple habitats - highly flexible",
+      "description": "Intelligent, adaptable birds that eat almost anything and thrive in changing conditions",
+      "habitat_association": "Anywhere food is available - from wild areas to towns",
+      "drought_impact": "Exploded 265% - opportunistic species moved in as ecosystem destabilized",
       "total_per_hour_2022": 10,
       "total_per_hour_2024": 36.5,
       "total_count_2022": 40,
@@ -1103,46 +1122,46 @@
     "major_trends": {
       "winners": [
         {
-          "category": "Generalist Omnivores",
+          "category": "Wading Birds & Ibises",
+          "percent_change": 390,
+          "driver": "White-faced Ibis concentrated at remaining water (+758%), though most wading birds declined"
+        },
+        {
+          "category": "Ravens & Opportunists",
           "percent_change": 265,
-          "driver": "Chihuahuan Raven invasion taking advantage of stressed ecosystem"
+          "driver": "Chihuahuan Raven invasion (0→110 birds) as ecosystem destabilized"
         },
         {
-          "category": "Wetland & Aquatic Birds",
-          "percent_change": 232,
-          "driver": "White-faced Ibis concentration in remaining water (but most wetland species declined)"
-        },
-        {
-          "category": "Urban-Associated Birds",
+          "category": "Urban & Garden Birds",
           "percent_change": 170,
-          "driver": "Urban areas as drought refugia with water/food"
+          "driver": "Birds sought refuge in towns with reliable water and food"
         },
         {
-          "category": "Raptors",
+          "category": "Hawks & Falcons",
           "percent_change": 100,
-          "driver": "Increased prey visibility in drought conditions"
+          "driver": "Prey became more visible as vegetation thinned"
         }
       ],
       "losers": [
         {
-          "category": "Aerial Insectivores",
+          "category": "Swallows",
           "percent_change": -100,
-          "driver": "Complete loss of aquatic insect emergence"
+          "driver": "Complete disappearance as aquatic insects vanished"
+        },
+        {
+          "category": "Marsh & Wetland Edge Birds",
+          "percent_change": -95,
+          "driver": "Loss of wetland vegetation and Red-winged Blackbirds"
         },
         {
           "category": "Shorebirds",
           "percent_change": -91,
-          "driver": "Loss of mudflat and shallow water habitat"
+          "driver": "Mudflats dried up (Western Sandpiper: 276→8)"
         },
         {
-          "category": "Fish-eating Specialists",
+          "category": "Fish-eating Birds",
           "percent_change": -81,
-          "driver": "Fish die-off or concentration in inaccessible areas"
-        },
-        {
-          "category": "Scavengers",
-          "percent_change": -56,
-          "driver": "Possible reduction in carrion availability"
+          "driver": "Fish populations crashed or became inaccessible"
         }
       ]
     },
@@ -1161,7 +1180,7 @@
         "White-winged Dove: 8 → 46 individuals (+475%)"
       ]
     },
-    "ecological_interpretation": "The data reveals severe drought impacts with fundamental wetland ecosystem changes. While White-faced Ibis concentrated at remaining water, most wetland species crashed including complete loss of Red-winged Blackbirds. The complete elimination of aerial insectivores indicates aquatic system collapse. Urban areas and generalist species benefited as drought refugia. The arrival of Chihuahuan Ravens suggests major ecosystem disruption allowing colonization by desert-adapted generalists. Overall bird counts increased 53.4% (1,262 to 1,936 individuals) despite species-level declines, driven by massive concentrations of ibises and colonizing ravens."
+    "ecological_interpretation": "The data reveals severe drought impacts with fundamental wetland ecosystem changes. While White-faced Ibis concentrated at remaining water, most wetland species crashed including complete loss of Red-winged Blackbirds. The complete elimination of swallows indicates aquatic insect collapse. Urban areas and generalist species benefited as drought refugia. The arrival of Chihuahuan Ravens suggests major ecosystem disruption allowing colonization by desert-adapted generalists. Overall bird counts increased 53.4% (1,262 to 1,936 individuals) despite species-level declines, driven by massive concentrations of ibises and colonizing ravens."
   },
   "data_notes": {
     "species_count_verification": "113 total species across all categories confirmed",
