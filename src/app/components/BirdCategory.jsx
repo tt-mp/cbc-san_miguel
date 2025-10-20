@@ -200,9 +200,9 @@ export default function BirdCategory({ show2022, show2024 }) {
               marginBottom: isExpanded && nextCategoryExpanded ? "0" : (isExpanded ? "1.5rem" : "2.5rem"),
               marginLeft: isExpanded ? "-1.5rem" : "0",
               marginRight: isExpanded ? "-1.5rem" : "0",
-              transition: "margin 0.3s ease, padding 0.3s ease, border-color 0s",
-              borderLeft: `3px solid ${isExpanded ? category.color : "transparent"}`,
-              paddingLeft: "calc(1.5rem - 2px)"
+              transition: "border-color 0s",
+              borderLeft: isExpanded ? `3px solid ${category.color}` : "none",
+              paddingLeft: isExpanded ? "calc(1.5rem - 3px)" : "0"
             }}
           >
             <Box
@@ -213,18 +213,21 @@ export default function BirdCategory({ show2022, show2024 }) {
                 gap: "1rem",
                 width: "100%",
                 backgroundColor: "transparent",
-                padding: isExpanded ? `${index === 0 ? '0' : '1.5rem'} 1.5rem 1.5rem 1.5rem` : "0",
-                transition: "background-color 0.3s ease, padding 0.3s ease"
+                paddingTop: isExpanded ? (index === 0 ? '0' : '1.5rem') : "0",
+                paddingRight: isExpanded ? "calc(40px + 1rem)" : (!hasCarousel ? "calc(40px + 1rem)" : "0"),
+                paddingBottom: isExpanded ? "1.5rem" : "0",
+                paddingLeft: isExpanded ? "calc(40px + 1rem)" : (!hasCarousel ? "calc(40px + 1rem)" : "0"),
+                transition: "background-color 0.3s ease"
               }}
             >
-              {hasCarousel && (
+              {hasCarousel && !isExpanded && (
                 <Box
                   style={{
                     width: "40px",
                     flexShrink: 0,
                     display: "flex",
-                    justifyContent: "center",
-                    visibility: isExpanded ? "hidden" : "visible"
+                    alignItems: "center",
+                    justifyContent: "center"
                   }}
                 >
                   <IconButton
@@ -375,14 +378,14 @@ export default function BirdCategory({ show2022, show2024 }) {
                 </Grid>
               </Box>
 
-              {hasCarousel && (
+              {hasCarousel && !isExpanded && (
                 <Box
                   style={{
                     width: "40px",
                     flexShrink: 0,
                     display: "flex",
-                    justifyContent: "center",
-                    visibility: isExpanded ? "hidden" : "visible"
+                    alignItems: "center",
+                    justifyContent: "center"
                   }}
                 >
                   <IconButton
