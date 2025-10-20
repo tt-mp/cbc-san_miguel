@@ -5,7 +5,7 @@ import { Flex, Text, Box } from "@radix-ui/themes";
 import { SunIcon } from "@radix-ui/react-icons";
 import BirdCategory from "./BirdCategory";
 
-// Simple filled circle to match the sun's center (without rays)
+// Two concentric circles for dark mode
 const MoonIcon = ({ width = 16, height = 16 }) => (
   <svg
     width={width}
@@ -17,8 +17,18 @@ const MoonIcon = ({ width = 16, height = 16 }) => (
     <circle
       cx="7.5"
       cy="7.5"
-      r="3.5"
-      fill="currentColor"
+      r="4.75"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <circle
+      cx="7.5"
+      cy="7.5"
+      r="2.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
     />
   </svg>
 );

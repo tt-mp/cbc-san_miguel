@@ -201,7 +201,7 @@ export default function BirdCategory({ show2022, show2024 }) {
               marginLeft: isExpanded ? "-1.5rem" : "0",
               marginRight: isExpanded ? "-1.5rem" : "0",
               transition: "border-color 0s",
-              borderLeft: isExpanded ? `3px solid ${category.color}` : "none",
+              borderLeft: isExpanded ? `4px solid ${category.color}` : "none",
               paddingLeft: isExpanded ? "calc(1.5rem - 3px)" : "0",
               paddingRight: isExpanded ? "1.5rem" : "0"
             }}
