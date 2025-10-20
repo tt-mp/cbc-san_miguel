@@ -254,8 +254,8 @@ export default function BirdCategory({ show2022, show2024 }) {
                   {birdsToDisplay.map((bird, gridIndex) => {
                     // Category square
                     if (gridIndex === columnStart - 1) {
-                      const isHovered = hoveredCategory === category.category_id && hasCarousel;
-                      const showFilledState = isExpanded || isHovered;
+                      const isHovered = hoveredCategory === category.category_id;
+                      const showFilledState = (isExpanded || isHovered) && hasCarousel;
 
                       return (
                         <Box
@@ -264,8 +264,8 @@ export default function BirdCategory({ show2022, show2024 }) {
                             e.stopPropagation();
                             toggleExpanded(category.category_id);
                           } : undefined}
-                          onMouseEnter={hasCarousel ? () => setHoveredCategory(category.category_id) : undefined}
-                          onMouseLeave={hasCarousel ? () => setHoveredCategory(null) : undefined}
+                          onMouseEnter={() => setHoveredCategory(category.category_id)}
+                          onMouseLeave={() => setHoveredCategory(null)}
                           style={{
                             backgroundColor: showFilledState ? category.color : "transparent",
                             border: showFilledState ? "none" : `1px solid ${category.color}`,
@@ -325,7 +325,9 @@ export default function BirdCategory({ show2022, show2024 }) {
                                 transition: "color 0.3s ease"
                               }}
                             >
-                              {hasCarousel && isHovered && !isExpanded
+                              {!hasCarousel && isHovered
+                                ? "That's all!"
+                                : hasCarousel && isHovered && !isExpanded
                                 ? `Click to see more`
                                 : hasCarousel && isHovered && isExpanded
                                 ? "Click to see less"
