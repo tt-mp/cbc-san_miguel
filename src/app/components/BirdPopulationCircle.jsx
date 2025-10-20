@@ -1,32 +1,48 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import { Box, Text } from "@radix-ui/themes";
 
 const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, animationDelay = 0 }) => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
-  const [animationType, setAnimationType] = useState(null); // 'pop' or 'pulse'
+  const [animationType, setAnimationType] = useState(null);
   const prevYearsRef = useRef({ show2022, show2024 });
+  const hasInitializedRef = useRef(false);
 
   // Detect when years change and determine animation type
-  useEffect(() => {
+  useLayoutEffect(() => {
     const prev = prevYearsRef.current;
     const hadNothingVisible = !prev.show2022 && !prev.show2024;
     const nowHasSomethingVisible = show2022 || show2024;
-    const hadSomethingVisible = prev.show2022 || prev.show2024;
+    const isNothingToSomething = hadNothingVisible && nowHasSomethingVisible;
 
-    // Pop: when expanding (animationDelay > 0) or going from nothing to something
-    if (animationDelay > 0 || (hadNothingVisible && nowHasSomethingVisible)) {
-      setAnimationType('pop');
-    }
-    // Pulse: when switching between states while something was already visible
-    else if (hadSomethingVisible && nowHasSomethingVisible &&
-             (prev.show2022 !== show2022 || prev.show2024 !== show2024)) {
-      setAnimationType('pulse');
-    } else {
-      setAnimationType(null);
+    // Pop: when going from nothing visible to something visible (with stagger)
+    if (isNothingToSomething) {
+      setAnimationType({ type: 'pop', pop2022: show2022, pop2024: show2024 });
+      const timeout = setTimeout(() => {
+        setAnimationType(null);
+      }, 500 + animationDelay);
+
+      prevYearsRef.current = { show2022, show2024 };
+      hasInitializedRef.current = true;
+      return () => clearTimeout(timeout);
     }
 
+    // Pulse: ONLY on initial load (when animationDelay > 0 and not initialized yet)
+    if (animationDelay > 0 && !hasInitializedRef.current) {
+      setAnimationType({ type: 'pulse', pop2022: show2022, pop2024: show2024 });
+      const timeout = setTimeout(() => {
+        setAnimationType(null);
+      }, 400 + animationDelay);
+
+      prevYearsRef.current = { show2022, show2024 };
+      hasInitializedRef.current = true;
+      return () => clearTimeout(timeout);
+    }
+
+    // No animation for all other cases (toggling between years)
+    setAnimationType(null);
     prevYearsRef.current = { show2022, show2024 };
+    hasInitializedRef.current = true;
   }, [show2022, show2024, animationDelay]);
 
   const viewBoxSize = 100;
@@ -171,15 +187,23 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       cy={centerPoint}
                       r={scaledRadius2022 || 0.1}
                       fill="var(--circle-outer)"
-                      opacity={show2022 ? 1 : 0}
-                      transform={`scale(${show2022 ? 1 : 0})`}
+                      opacity={
+                        animationType?.type === 'pop' && animationType.pop2022 
+                          ? 0 
+                          : show2022 ? 1 : 0
+                      }
+                      transform={`scale(${
+                        animationType?.type === 'pop' && animationType.pop2022 
+                          ? 0 
+                          : show2022 ? 1 : 0
+                      })`}
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
                         transformOrigin: `${centerPoint}px ${centerPoint}px`,
-                        ...(animationType === 'pop' && {
+                        ...(animationType?.type === 'pop' && animationType.pop2022 && {
                           animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
                         }),
-                        ...(animationType === 'pulse' && {
+                        ...(animationType?.type === 'pulse' && animationType.pop2022 && {
                           animation: `pulse 0.4s ease-out ${animationDelay}ms`
                         })
                       }}
@@ -190,15 +214,23 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       cy={centerPoint}
                       r={scaledRadius2024 || 0.1}
                       fill="var(--circle-inner)"
-                      opacity={show2024 ? 1 : 0}
-                      transform={`scale(${show2024 ? 1 : 0})`}
+                      opacity={
+                        animationType?.type === 'pop' && animationType.pop2024 
+                          ? 0 
+                          : show2024 ? 1 : 0
+                      }
+                      transform={`scale(${
+                        animationType?.type === 'pop' && animationType.pop2024 
+                          ? 0 
+                          : show2024 ? 1 : 0
+                      })`}
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
                         transformOrigin: `${centerPoint}px ${centerPoint}px`,
-                        ...(animationType === 'pop' && {
+                        ...(animationType?.type === 'pop' && animationType.pop2024 && {
                           animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
                         }),
-                        ...(animationType === 'pulse' && {
+                        ...(animationType?.type === 'pulse' && animationType.pop2024 && {
                           animation: `pulse 0.4s ease-out ${animationDelay}ms`
                         })
                       }}
@@ -212,15 +244,23 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       cy={centerPoint}
                       r={scaledRadius2024 || 0.1}
                       fill="var(--circle-inner)"
-                      opacity={show2024 ? 1 : 0}
-                      transform={`scale(${show2024 ? 1 : 0})`}
+                      opacity={
+                        animationType?.type === 'pop' && animationType.pop2024 
+                          ? 0 
+                          : show2024 ? 1 : 0
+                      }
+                      transform={`scale(${
+                        animationType?.type === 'pop' && animationType.pop2024 
+                          ? 0 
+                          : show2024 ? 1 : 0
+                      })`}
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
                         transformOrigin: `${centerPoint}px ${centerPoint}px`,
-                        ...(animationType === 'pop' && {
+                        ...(animationType?.type === 'pop' && animationType.pop2024 && {
                           animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
                         }),
-                        ...(animationType === 'pulse' && {
+                        ...(animationType?.type === 'pulse' && animationType.pop2024 && {
                           animation: `pulse 0.4s ease-out ${animationDelay}ms`
                         })
                       }}
@@ -231,15 +271,23 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       cy={centerPoint}
                       r={scaledRadius2022 || 0.1}
                       fill="var(--circle-outer)"
-                      opacity={show2022 ? 1 : 0}
-                      transform={`scale(${show2022 ? 1 : 0})`}
+                      opacity={
+                        animationType?.type === 'pop' && animationType.pop2022 
+                          ? 0 
+                          : show2022 ? 1 : 0
+                      }
+                      transform={`scale(${
+                        animationType?.type === 'pop' && animationType.pop2022 
+                          ? 0 
+                          : show2022 ? 1 : 0
+                      })`}
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
                         transformOrigin: `${centerPoint}px ${centerPoint}px`,
-                        ...(animationType === 'pop' && {
+                        ...(animationType?.type === 'pop' && animationType.pop2022 && {
                           animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
                         }),
-                        ...(animationType === 'pulse' && {
+                        ...(animationType?.type === 'pulse' && animationType.pop2022 && {
                           animation: `pulse 0.4s ease-out ${animationDelay}ms`
                         })
                       }}

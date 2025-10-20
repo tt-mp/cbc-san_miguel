@@ -530,7 +530,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
             transform: scale(1);
           }
           50% {
-            transform: scale(1.1);
+            transform: scale(1.03);
           }
           100% {
             transform: scale(1);
