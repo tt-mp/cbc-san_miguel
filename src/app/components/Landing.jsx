@@ -24,8 +24,8 @@ const MoonIcon = ({ width = 16, height = 16 }) => (
 );
 
 export default function Landing() {
-  const [show2022, setShow2022] = useState(true);
-  const [show2024, setShow2024] = useState(true);
+  const [show2022, setShow2022] = useState(false);
+  const [show2024, setShow2024] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
   // Initialize based on system preference
@@ -65,7 +65,7 @@ export default function Landing() {
         }}
       >
         <Flex gap="3" align="center">
-          <Text size="3" weight="bold">Birds of San Miguel de Allende</Text>
+          <Text size="3" weight="bold">CBC: Birds of San Miguel de Allende</Text>
 
           {/* Dark mode toggle */}
           <Box
