@@ -69,38 +69,12 @@ export default function BirdCategory({ show2022, show2024 }) {
     });
   };
 
-  // Find global max value based on which years are toggled
-  const globalMaxValue = (() => {
-    const bothYears = show2022 && show2024;
-    const only2022 = show2022 && !show2024;
-    const only2024 = !show2022 && show2024;
-
-    if (bothYears) {
-      // Use max across both years
-      return Math.max(
-        ...categories.flatMap(category =>
-          category.species.flatMap(bird => [bird.per_hour_2022, bird.per_hour_2024])
-        )
-      );
-    } else if (only2022) {
-      // Use max from only 2022 data
-      return Math.max(
-        ...categories.flatMap(category =>
-          category.species.map(bird => bird.per_hour_2022)
-        )
-      );
-    } else if (only2024) {
-      // Use max from only 2024 data
-      return Math.max(
-        ...categories.flatMap(category =>
-          category.species.map(bird => bird.per_hour_2024)
-        )
-      );
-    } else {
-      // Neither year selected, return 1 to avoid division by zero
-      return 1;
-    }
-  })();
+  // Find global max value across both years to maintain consistent scale
+  const globalMaxValue = Math.max(
+    ...categories.flatMap(category =>
+      category.species.flatMap(bird => [bird.per_hour_2022, bird.per_hour_2024])
+    )
+  );
 
   return (
     <Box py="6">
