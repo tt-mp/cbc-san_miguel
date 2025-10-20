@@ -115,7 +115,7 @@ export default function BirdCategory({ show2022, show2024 }) {
 
         // Get pre-calculated category percent change
         const categoryChange = category.categoryChange;
-        const categoryChangeDisplay = categoryChange > 0 ? `+${categoryChange.toFixed(1)}%` : `${categoryChange.toFixed(1)}%`;
+        const categoryChangeDisplay = categoryChange > 0 ? `+${categoryChange.toFixed(0)}%` : `${categoryChange.toFixed(0)}%`;
 
         // Calculate totals for each year (per_hour for both, raw counts for single)
         const totalPerHour2022 = category.species.reduce((sum, bird) => sum + bird.per_hour_2022, 0);

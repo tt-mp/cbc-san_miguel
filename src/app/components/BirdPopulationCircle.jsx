@@ -21,8 +21,6 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
   const scaledRadius2024 = getRadius(species.per_hour_2024);
 
   const changeValue = species.change;
-  const changeDisplay =
-    changeValue > 0 ? `+${changeValue.toFixed(2)}` : changeValue.toFixed(2);
 
   const handleMouseMove = (e) => {
     setTooltipPosition({ x: e.clientX, y: e.clientY });
@@ -112,7 +110,7 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                         : "var(--foreground)",
                   }}
                 >
-                  {changeDisplay}%
+                  {changeValue > 0 ? `+${changeValue.toFixed(0)}%` : `${changeValue.toFixed(0)}%`}
                 </span>
               </div>
             )}
