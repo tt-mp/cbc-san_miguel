@@ -200,7 +200,9 @@ export default function BirdCategory({ show2022, show2024 }) {
               marginBottom: isExpanded && nextCategoryExpanded ? "0" : (isExpanded ? "1.5rem" : "2.5rem"),
               marginLeft: isExpanded ? "-1.5rem" : "0",
               marginRight: isExpanded ? "-1.5rem" : "0",
-              transition: "margin 0.3s ease, padding 0.3s ease"
+              transition: "margin 0.3s ease, padding 0.3s ease, border-color 0s",
+              borderLeft: `3px solid ${isExpanded ? category.color : "transparent"}`,
+              paddingLeft: "calc(1.5rem - 2px)"
             }}
           >
             <Box
