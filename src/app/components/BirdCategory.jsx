@@ -372,6 +372,8 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                       // Bird square
                       const isZeroCount = (show2022 && !show2024 && bird.count_2022 === 0) ||
                                          (!show2022 && show2024 && bird.count_2024 === 0);
+                      // Random delay for pop animation
+                      const randomDelay = Math.random() * 300;
 
                       return (
                         <Box
@@ -394,6 +396,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                             categoryMaxValue={globalMaxValue}
                             show2022={show2022}
                             show2024={show2024}
+                            animationDelay={randomDelay}
                           />
                         </Box>
                       );
@@ -520,6 +523,17 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
           100% {
             transform: scale(1);
             opacity: 1;
+          }
+        }
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.1);
+          }
+          100% {
+            transform: scale(1);
           }
         }
       `}</style>

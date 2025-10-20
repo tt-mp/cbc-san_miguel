@@ -1,9 +1,33 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Box, Text } from "@radix-ui/themes";
 
 const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, animationDelay = 0 }) => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const [animationType, setAnimationType] = useState(null); // 'pop' or 'pulse'
+  const prevYearsRef = useRef({ show2022, show2024 });
+
+  // Detect when years change and determine animation type
+  useEffect(() => {
+    const prev = prevYearsRef.current;
+    const hadNothingVisible = !prev.show2022 && !prev.show2024;
+    const nowHasSomethingVisible = show2022 || show2024;
+    const hadSomethingVisible = prev.show2022 || prev.show2024;
+
+    // Pop: when expanding (animationDelay > 0) or going from nothing to something
+    if (animationDelay > 0 || (hadNothingVisible && nowHasSomethingVisible)) {
+      setAnimationType('pop');
+    }
+    // Pulse: when switching between states while something was already visible
+    else if (hadSomethingVisible && nowHasSomethingVisible &&
+             (prev.show2022 !== show2022 || prev.show2024 !== show2024)) {
+      setAnimationType('pulse');
+    } else {
+      setAnimationType(null);
+    }
+
+    prevYearsRef.current = { show2022, show2024 };
+  }, [show2022, show2024, animationDelay]);
 
   const viewBoxSize = 100;
   const centerPoint = viewBoxSize / 2;
@@ -152,8 +176,11 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
                         transformOrigin: `${centerPoint}px ${centerPoint}px`,
-                        ...(animationDelay > 0 && {
+                        ...(animationType === 'pop' && {
                           animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
+                        }),
+                        ...(animationType === 'pulse' && {
+                          animation: `pulse 0.4s ease-out ${animationDelay}ms`
                         })
                       }}
                     />
@@ -168,8 +195,11 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
                         transformOrigin: `${centerPoint}px ${centerPoint}px`,
-                        ...(animationDelay > 0 && {
+                        ...(animationType === 'pop' && {
                           animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
+                        }),
+                        ...(animationType === 'pulse' && {
+                          animation: `pulse 0.4s ease-out ${animationDelay}ms`
                         })
                       }}
                     />
@@ -187,8 +217,11 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
                         transformOrigin: `${centerPoint}px ${centerPoint}px`,
-                        ...(animationDelay > 0 && {
+                        ...(animationType === 'pop' && {
                           animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
+                        }),
+                        ...(animationType === 'pulse' && {
+                          animation: `pulse 0.4s ease-out ${animationDelay}ms`
                         })
                       }}
                     />
@@ -203,8 +236,11 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
                         transformOrigin: `${centerPoint}px ${centerPoint}px`,
-                        ...(animationDelay > 0 && {
+                        ...(animationType === 'pop' && {
                           animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
+                        }),
+                        ...(animationType === 'pulse' && {
+                          animation: `pulse 0.4s ease-out ${animationDelay}ms`
                         })
                       }}
                     />
