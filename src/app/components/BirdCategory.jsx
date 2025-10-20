@@ -202,7 +202,8 @@ export default function BirdCategory({ show2022, show2024 }) {
               marginRight: isExpanded ? "-1.5rem" : "0",
               transition: "border-color 0s",
               borderLeft: isExpanded ? `3px solid ${category.color}` : "none",
-              paddingLeft: isExpanded ? "calc(1.5rem - 3px)" : "0"
+              paddingLeft: isExpanded ? "calc(1.5rem - 3px)" : "0",
+              paddingRight: isExpanded ? "1.5rem" : "0"
             }}
           >
             <Box
@@ -407,12 +408,13 @@ export default function BirdCategory({ show2022, show2024 }) {
             {isExpanded && (
               <Box
                 onClick={() => toggleExpanded(category.category_id)}
-                px="6"
                 pb="6"
                 pt="4"
                 style={{
                   animation: "expandDown 0.3s ease-out",
-                  backgroundColor: "var(--background)"
+                  backgroundColor: "var(--background)",
+                  paddingLeft: "calc(40px + 1rem)",
+                  paddingRight: "calc(40px + 1rem)"
                 }}
               >
                 <Grid
