@@ -67,8 +67,6 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
       }
       return newSet;
     });
-    // Reset expandAll when user manually toggles a category
-    if (setExpandAll) setExpandAll(null);
   };
 
   // Handle expand all / collapse all
@@ -85,6 +83,30 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
     }
     // If expandAll is null, do nothing (user has manual control)
   }, [expandAll]); // categories is derived from static data, doesn't need to be a dependency
+
+  // Update expandAll state when user manually expands/collapses to match reality
+  useEffect(() => {
+    if (!setExpandAll) return;
+
+    const allExpandableIds = categories
+      .filter(cat => cat.species.length > 4)
+      .map(cat => cat.category_id);
+
+    // Check if all expandable categories are currently expanded
+    const allExpanded = allExpandableIds.length > 0 &&
+      allExpandableIds.every(id => expandedCategories.has(id));
+
+    // Check if no categories are expanded
+    const noneExpanded = expandedCategories.size === 0;
+
+    if (allExpanded) {
+      setExpandAll(true);
+    } else if (noneExpanded) {
+      setExpandAll(false);
+    } else {
+      setExpandAll(null);
+    }
+  }, [expandedCategories, setExpandAll]);
 
   // Calculate max values for different metrics
   const globalMaxPerHour = Math.max(
@@ -441,6 +463,8 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                     .map((bird, filteredIndex) => {
                       const isZeroCount = (show2022 && !show2024 && bird.count_2022 === 0) ||
                                          (!show2022 && show2024 && bird.count_2024 === 0);
+                      // Random delay between 0ms and 400ms for staggered pop-in effect
+                      const randomDelay = Math.random() * 400;
 
                       return (
                         <Box
@@ -463,6 +487,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                             categoryMaxValue={globalMaxValue}
                             show2022={show2022}
                             show2024={show2024}
+                            animationDelay={randomDelay}
                           />
                         </Box>
                       );
@@ -482,6 +507,19 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+        @keyframes popIn {
+          0% {
+            transform: scale(0);
+            opacity: 0;
+          }
+          50% {
+            transform: scale(1.15);
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
           }
         }
       `}</style>

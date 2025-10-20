@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box, Text } from "@radix-ui/themes";
 
-const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 }) => {
+const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, animationDelay = 0 }) => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
@@ -151,7 +151,10 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                       transform={`scale(${show2022 ? 1 : 0})`}
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                        transformOrigin: `${centerPoint}px ${centerPoint}px`
+                        transformOrigin: `${centerPoint}px ${centerPoint}px`,
+                        ...(animationDelay > 0 && {
+                          animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
+                        })
                       }}
                     />
                     {/* 2024 circle (smaller, rendered on top) */}
@@ -164,7 +167,10 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                       transform={`scale(${show2024 ? 1 : 0})`}
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                        transformOrigin: `${centerPoint}px ${centerPoint}px`
+                        transformOrigin: `${centerPoint}px ${centerPoint}px`,
+                        ...(animationDelay > 0 && {
+                          animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
+                        })
                       }}
                     />
                   </>
@@ -180,7 +186,10 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                       transform={`scale(${show2024 ? 1 : 0})`}
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                        transformOrigin: `${centerPoint}px ${centerPoint}px`
+                        transformOrigin: `${centerPoint}px ${centerPoint}px`,
+                        ...(animationDelay > 0 && {
+                          animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
+                        })
                       }}
                     />
                     {/* 2022 circle (smaller, rendered on top) */}
@@ -193,7 +202,10 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                       transform={`scale(${show2022 ? 1 : 0})`}
                       style={{
                         transition: "r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                        transformOrigin: `${centerPoint}px ${centerPoint}px`
+                        transformOrigin: `${centerPoint}px ${centerPoint}px`,
+                        ...(animationDelay > 0 && {
+                          animation: `popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationDelay}ms backwards`
+                        })
                       }}
                     />
                   </>
