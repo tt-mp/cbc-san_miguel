@@ -304,7 +304,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                           }}
                         >
                           {/* Category name - Hero element */}
-                          <Box style={{ width: "100%" }}>
+                          <Box style={{ width: "100%", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                             <Text
                               weight="bold"
                               style={{
@@ -318,6 +318,20 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                             >
                               {category.name}
                             </Text>
+                            {category.habitat_association && (
+                              <Text
+                                size="1"
+                                style={{
+                                  fontSize: "0.75rem",
+                                  lineHeight: "1.2",
+                                  opacity: 0.7,
+                                  color: showFilledState ? "var(--background)" : "var(--foreground)",
+                                  transition: "color 0.3s ease"
+                                }}
+                              >
+                                {category.habitat_association}
+                              </Text>
+                            )}
                           </Box>
 
                           {/* Bottom section - Stats */}
