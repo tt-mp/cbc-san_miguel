@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Grid, Text, IconButton } from "@radix-ui/themes";
 import { ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 import data from "../../data/cbc_2022-2024.json";
 import BirdPopulationCircle from "./BirdPopulationCircle";
 
-export default function BirdCategory({ show2022, show2024 }) {
+export default function BirdCategory({ show2022, show2024, expandAll, setExpandAll }) {
   // Sort species by absolute change (largest changes first)
   const categoriesWithSortedSpecies = data.categories.map(category => ({
     ...category,
@@ -67,14 +67,41 @@ export default function BirdCategory({ show2022, show2024 }) {
       }
       return newSet;
     });
+    // Reset expandAll when user manually toggles a category
+    if (setExpandAll) setExpandAll(null);
   };
 
-  // Find global max value across both years to maintain consistent scale
-  const globalMaxValue = Math.max(
+  // Handle expand all / collapse all
+  useEffect(() => {
+    if (expandAll === true) {
+      // Expand all categories that have carousels (more than 4 species)
+      const allExpandableIds = categories
+        .filter(cat => cat.species.length > 4)
+        .map(cat => cat.category_id);
+      setExpandedCategories(new Set(allExpandableIds));
+    } else if (expandAll === false) {
+      // Collapse all categories
+      setExpandedCategories(new Set());
+    }
+    // If expandAll is null, do nothing (user has manual control)
+  }, [expandAll]); // categories is derived from static data, doesn't need to be a dependency
+
+  // Calculate max values for different metrics
+  const globalMaxPerHour = Math.max(
     ...categories.flatMap(category =>
       category.species.flatMap(bird => [bird.per_hour_2022, bird.per_hour_2024])
     )
   );
+
+  const globalMaxCount = Math.max(
+    ...categories.flatMap(category =>
+      category.species.flatMap(bird => [bird.count_2022, bird.count_2024])
+    )
+  );
+
+  // Use per_hour when both years shown, count when single year shown
+  const bothYearsShown = show2022 && show2024;
+  const globalMaxValue = bothYearsShown ? globalMaxPerHour : globalMaxCount;
 
   return (
     <Box py="6">
@@ -91,9 +118,7 @@ export default function BirdCategory({ show2022, show2024 }) {
         const categoryChange = category.categoryChange;
         const categoryChangeDisplay = categoryChange > 0 ? `+${categoryChange.toFixed(0)}%` : `${categoryChange.toFixed(0)}%`;
 
-        // Calculate totals for each year (per_hour for both, raw counts for single)
-        const totalPerHour2022 = category.species.reduce((sum, bird) => sum + bird.per_hour_2022, 0);
-        const totalPerHour2024 = category.species.reduce((sum, bird) => sum + bird.per_hour_2024, 0);
+        // Calculate totals for each year (raw counts for single year display)
         const totalCount2022 = category.species.reduce((sum, bird) => sum + bird.count_2022, 0);
         const totalCount2024 = category.species.reduce((sum, bird) => sum + bird.count_2024, 0);
 

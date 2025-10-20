@@ -37,6 +37,7 @@ export default function Landing() {
   const [show2022, setShow2022] = useState(false);
   const [show2024, setShow2024] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [expandAll, setExpandAll] = useState(null); // null = user controls, true = all expanded, false = all collapsed
 
   // Initialize based on system preference
   useEffect(() => {
@@ -75,7 +76,7 @@ export default function Landing() {
         }}
       >
         <Flex gap="3" align="center">
-          <Text size="3" weight="bold">CBC: Birds of San Miguel de Allende</Text>
+          <Text size="3" weight="bold">Christmas Bird Count: 113 Species in San Miguel de Allende</Text>
 
           {/* Dark mode toggle */}
           <Box
@@ -143,10 +144,36 @@ export default function Landing() {
             />
             <Text size="2" weight="medium">Jan 4, 2024</Text>
           </Flex>
+
+          {/* Expand/Collapse All */}
+          <Box
+            style={{
+              marginLeft: "1rem",
+              paddingLeft: "1rem",
+              borderLeft: "1px solid var(--foreground)",
+              opacity: 0.3
+            }}
+          />
+          <Text
+            size="2"
+            weight="medium"
+            onClick={() => setExpandAll(expandAll === true ? false : true)}
+            style={{
+              cursor: "pointer",
+              opacity: 0.7,
+              transition: "opacity 0.2s ease",
+              marginRight: "calc(1rem)",
+              textDecoration: "underline"
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.opacity = "1"}
+            onMouseLeave={(e) => e.currentTarget.style.opacity = "0.7"}
+          >
+            {expandAll === true ? "Collapse all" : "Expand all"}
+          </Text>
         </Flex>
       </Flex>
 
-      <BirdCategory show2022={show2022} show2024={show2024} />
+      <BirdCategory show2022={show2022} show2024={show2024} expandAll={expandAll} setExpandAll={setExpandAll} />
     </Flex>
   );
 }

@@ -8,6 +8,11 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
   const viewBoxSize = 100;
   const centerPoint = viewBoxSize / 2;
 
+  // Determine which metric to use: counts for single year, per_hour for both years
+  const bothYearsShown = show2022 && show2024;
+  const value2022 = bothYearsShown ? species.per_hour_2022 : species.count_2022;
+  const value2024 = bothYearsShown ? species.per_hour_2024 : species.count_2024;
+
   // Use consistent scale based on category maximum
   // Circle area should be proportional to value, so radius = sqrt(value)
   const getRadius = (value) => {
@@ -17,10 +22,15 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
     return Math.sqrt(value / categoryMaxValue) * maxPossibleRadius;
   };
 
-  const scaledRadius2022 = getRadius(species.per_hour_2022);
-  const scaledRadius2024 = getRadius(species.per_hour_2024);
+  const scaledRadius2022 = getRadius(value2022);
+  const scaledRadius2024 = getRadius(value2024);
 
-  const changeValue = species.change;
+  // Calculate percentage change (handle division by zero for new/extinct species)
+  const changeValue = species.per_hour_2022 === 0 && species.per_hour_2024 > 0
+    ? 'NEW' // Species didn't exist in 2022
+    : species.per_hour_2024 === 0 && species.per_hour_2022 > 0
+    ? 'GONE' // Species disappeared by 2024
+    : ((species.per_hour_2024 - species.per_hour_2022) / species.per_hour_2022) * 100;
 
   const handleMouseMove = (e) => {
     setTooltipPosition({ x: e.clientX, y: e.clientY });
@@ -91,29 +101,6 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                 </div>
               </div>
             )}
-            {show2022 && show2024 && (
-              <div
-                className="flex justify-between items-center mt-1.5 pt-1.5 border-t"
-                style={{ borderColor: "var(--foreground)" }}
-              >
-                <span className="text-xs" style={{ color: "var(--foreground)" }}>
-                  Change
-                </span>
-                <span
-                  className="font-bold text-xs"
-                  style={{
-                    color:
-                      changeValue > 0
-                        ? "#4CAF50"
-                        : changeValue < 0
-                        ? "#E84A5F"
-                        : "var(--foreground)",
-                  }}
-                >
-                  {changeValue > 0 ? `+${changeValue.toFixed(0)}%` : `${changeValue.toFixed(0)}%`}
-                </span>
-              </div>
-            )}
           </div>
         </div>
       )}
@@ -132,7 +119,11 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                 ? `${species.count_2022} ${species.name}`
                 : !show2022 && show2024
                 ? `${species.count_2024} ${species.name}`
-                : species.name}
+                : changeValue === 'NEW'
+                ? `+100% ${species.name}`
+                : changeValue === 'GONE'
+                ? `-100% ${species.name}`
+                : `${changeValue > 0 ? '+' : ''}${changeValue.toFixed(0)}% ${species.name}`}
             </Text>
 
             <Box

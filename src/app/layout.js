@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "CBC: San Miguel de Allende",
+  title: "Christmas Bird Count: 113 Species in San Miguel de Allende",
   description:
     "Compare bird counts of 2022 and 2024 CBCs in San Miguel de Allende, Mexico",
 };
