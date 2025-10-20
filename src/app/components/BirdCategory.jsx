@@ -377,7 +377,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
 
                       return (
                         <Box
-                          key={`bird-${index}-${gridIndex}`}
+                          key={`bird-carousel-${category.category_id}-${bird.name}`}
                           style={{
                             backgroundColor: "var(--background)",
                             aspectRatio: "1 / 1",
@@ -392,6 +392,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                           }}
                         >
                           <BirdPopulationCircle
+                            key={`carousel-circle-${category.category_id}-${bird.name}`}
                             species={bird}
                             categoryMaxValue={globalMaxValue}
                             show2022={show2022}
@@ -471,7 +472,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
 
                       return (
                         <Box
-                          key={`expanded-bird-${index}-${filteredIndex}`}
+                          key={`expanded-bird-${category.category_id}-${bird.name}`}
                           style={{
                             backgroundColor: "var(--background)",
                             aspectRatio: "1 / 1",
@@ -486,6 +487,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                           }}
                         >
                           <BirdPopulationCircle
+                            key={`expanded-circle-${category.category_id}-${bird.name}`}
                             species={bird}
                             categoryMaxValue={globalMaxValue}
                             show2022={show2022}
@@ -534,6 +536,16 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
           }
           100% {
             transform: scale(1);
+          }
+        }
+        @keyframes disappear {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(0);
+            opacity: 0;
           }
         }
       `}</style>

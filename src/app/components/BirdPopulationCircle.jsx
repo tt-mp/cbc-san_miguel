@@ -4,9 +4,18 @@ import { Box, Text } from "@radix-ui/themes";
 const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, animationDelay = 0 }) => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
-  const [animationType, setAnimationType] = useState(null);
-  const prevYearsRef = useRef({ show2022, show2024 });
+  const prevYearsRef = useRef({ show2022: false, show2024: false });
   const hasInitializedRef = useRef(false);
+
+  // Initialize animation type based on whether we should pop on mount
+  const [animationType, setAnimationType] = useState(() => {
+    const nowHasSomethingVisible = show2022 || show2024;
+    // Only pop on mount if there's an animation delay (initial load or expansion)
+    if (animationDelay > 0 && nowHasSomethingVisible) {
+      return { type: 'pop', pop2022: show2022, pop2024: show2024 };
+    }
+    return null;
+  });
 
   // Detect when years change and determine animation type
   useLayoutEffect(() => {
@@ -14,10 +23,13 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
     const hadNothingVisible = !prev.show2022 && !prev.show2024;
     const nowHasSomethingVisible = show2022 || show2024;
     const isNothingToSomething = hadNothingVisible && nowHasSomethingVisible;
+    const hadSomethingVisible = prev.show2022 || prev.show2024;
+    const nowHasNothingVisible = !show2022 && !show2024;
+    const isSomethingToNothing = hadSomethingVisible && nowHasNothingVisible;
 
-    // Pop: when going from nothing visible to something visible (with stagger)
-    if (isNothingToSomething) {
-      setAnimationType({ type: 'pop', pop2022: show2022, pop2024: show2024 });
+    // Skip if already initialized with pop animation on mount
+    if (!hasInitializedRef.current && animationDelay > 0 && nowHasSomethingVisible) {
+      // Set timeout to clear animation after it completes
       const timeout = setTimeout(() => {
         setAnimationType(null);
       }, 500 + animationDelay);
@@ -27,20 +39,32 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
       return () => clearTimeout(timeout);
     }
 
-    // Pulse: ONLY on initial load (when animationDelay > 0 and not initialized yet)
-    if (animationDelay > 0 && !hasInitializedRef.current) {
-      setAnimationType({ type: 'pulse', pop2022: show2022, pop2024: show2024 });
+    // Pop with stagger: nothing-to-something transition (when toggling years)
+    if (isNothingToSomething && hasInitializedRef.current) {
+      setAnimationType({ type: 'pop', pop2022: show2022, pop2024: show2024 });
       const timeout = setTimeout(() => {
         setAnimationType(null);
-      }, 400 + animationDelay);
+      }, 500 + animationDelay);
 
       prevYearsRef.current = { show2022, show2024 };
-      hasInitializedRef.current = true;
+      return () => clearTimeout(timeout);
+    }
+
+    // Disappear with stagger: something-to-nothing transition
+    if (isSomethingToNothing && hasInitializedRef.current) {
+      setAnimationType({ type: 'disappear', pop2022: prev.show2022, pop2024: prev.show2024 });
+      const timeout = setTimeout(() => {
+        setAnimationType(null);
+        prevYearsRef.current = { show2022, show2024 };
+      }, 400 + animationDelay);
+
       return () => clearTimeout(timeout);
     }
 
     // No animation for all other cases (toggling between years)
-    setAnimationType(null);
+    if (hasInitializedRef.current) {
+      setAnimationType(null);
+    }
     prevYearsRef.current = { show2022, show2024 };
     hasInitializedRef.current = true;
   }, [show2022, show2024, animationDelay]);
@@ -152,8 +176,8 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
             <Text
               size="1"
               align="center"
-              className="leading-tight break-words hyphens-auto mb-1"
-              style={{ color: "var(--foreground)" }}
+              className="leading-tight break-words hyphens-auto mb-1 text-center"
+              style={{ color: "var(--foreground)", textAlign: "center", width: "100%", display: "block" }}
             >
               {show2022 && !show2024
                 ? `${species.count_2022} ${species.name}`
@@ -188,13 +212,17 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       r={scaledRadius2022 || 0.1}
                       fill="var(--circle-outer)"
                       opacity={
-                        animationType?.type === 'pop' && animationType.pop2022 
-                          ? 0 
+                        animationType?.type === 'pop' && animationType.pop2022
+                          ? 0
+                          : animationType?.type === 'disappear' && animationType.pop2022
+                          ? 1
                           : show2022 ? 1 : 0
                       }
                       transform={`scale(${
-                        animationType?.type === 'pop' && animationType.pop2022 
-                          ? 0 
+                        animationType?.type === 'pop' && animationType.pop2022
+                          ? 0
+                          : animationType?.type === 'disappear' && animationType.pop2022
+                          ? 1
                           : show2022 ? 1 : 0
                       })`}
                       style={{
@@ -205,6 +233,9 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                         }),
                         ...(animationType?.type === 'pulse' && animationType.pop2022 && {
                           animation: `pulse 0.4s ease-out ${animationDelay}ms`
+                        }),
+                        ...(animationType?.type === 'disappear' && animationType.pop2022 && {
+                          animation: `disappear 0.4s ease-in ${animationDelay}ms forwards`
                         })
                       }}
                     />
@@ -215,13 +246,17 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       r={scaledRadius2024 || 0.1}
                       fill="var(--circle-inner)"
                       opacity={
-                        animationType?.type === 'pop' && animationType.pop2024 
-                          ? 0 
+                        animationType?.type === 'pop' && animationType.pop2024
+                          ? 0
+                          : animationType?.type === 'disappear' && animationType.pop2024
+                          ? 1
                           : show2024 ? 1 : 0
                       }
                       transform={`scale(${
-                        animationType?.type === 'pop' && animationType.pop2024 
-                          ? 0 
+                        animationType?.type === 'pop' && animationType.pop2024
+                          ? 0
+                          : animationType?.type === 'disappear' && animationType.pop2024
+                          ? 1
                           : show2024 ? 1 : 0
                       })`}
                       style={{
@@ -232,6 +267,9 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                         }),
                         ...(animationType?.type === 'pulse' && animationType.pop2024 && {
                           animation: `pulse 0.4s ease-out ${animationDelay}ms`
+                        }),
+                        ...(animationType?.type === 'disappear' && animationType.pop2024 && {
+                          animation: `disappear 0.4s ease-in ${animationDelay}ms forwards`
                         })
                       }}
                     />
@@ -245,13 +283,17 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       r={scaledRadius2024 || 0.1}
                       fill="var(--circle-inner)"
                       opacity={
-                        animationType?.type === 'pop' && animationType.pop2024 
-                          ? 0 
+                        animationType?.type === 'pop' && animationType.pop2024
+                          ? 0
+                          : animationType?.type === 'disappear' && animationType.pop2024
+                          ? 1
                           : show2024 ? 1 : 0
                       }
                       transform={`scale(${
-                        animationType?.type === 'pop' && animationType.pop2024 
-                          ? 0 
+                        animationType?.type === 'pop' && animationType.pop2024
+                          ? 0
+                          : animationType?.type === 'disappear' && animationType.pop2024
+                          ? 1
                           : show2024 ? 1 : 0
                       })`}
                       style={{
@@ -262,6 +304,9 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                         }),
                         ...(animationType?.type === 'pulse' && animationType.pop2024 && {
                           animation: `pulse 0.4s ease-out ${animationDelay}ms`
+                        }),
+                        ...(animationType?.type === 'disappear' && animationType.pop2024 && {
+                          animation: `disappear 0.4s ease-in ${animationDelay}ms forwards`
                         })
                       }}
                     />
@@ -272,13 +317,17 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                       r={scaledRadius2022 || 0.1}
                       fill="var(--circle-outer)"
                       opacity={
-                        animationType?.type === 'pop' && animationType.pop2022 
-                          ? 0 
+                        animationType?.type === 'pop' && animationType.pop2022
+                          ? 0
+                          : animationType?.type === 'disappear' && animationType.pop2022
+                          ? 1
                           : show2022 ? 1 : 0
                       }
                       transform={`scale(${
-                        animationType?.type === 'pop' && animationType.pop2022 
-                          ? 0 
+                        animationType?.type === 'pop' && animationType.pop2022
+                          ? 0
+                          : animationType?.type === 'disappear' && animationType.pop2022
+                          ? 1
                           : show2022 ? 1 : 0
                       })`}
                       style={{
@@ -289,6 +338,9 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
                         }),
                         ...(animationType?.type === 'pulse' && animationType.pop2022 && {
                           animation: `pulse 0.4s ease-out ${animationDelay}ms`
+                        }),
+                        ...(animationType?.type === 'disappear' && animationType.pop2022 && {
+                          animation: `disappear 0.4s ease-in ${animationDelay}ms forwards`
                         })
                       }}
                     />
@@ -305,8 +357,8 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024, a
             <Text
               size="1"
               align="center"
-              className="leading-tight break-words hyphens-auto"
-              style={{ color: "var(--foreground)" }}
+              className="leading-tight break-words hyphens-auto text-center"
+              style={{ color: "var(--foreground)", textAlign: "center", width: "100%", display: "block" }}
             >
               {species.name}
             </Text>
