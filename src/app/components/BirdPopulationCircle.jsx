@@ -47,12 +47,12 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
             backgroundColor: "var(--background)",
           }}
         >
-          <div className="font-bold text-xs mb-1.5" style={{ color: "var(--foreground)" }}>
+          <div className="font-bold text-xs mb-2" style={{ color: "var(--foreground)" }}>
             {species.name}
           </div>
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-1">
             {show2022 && (
-              <div className="flex justify-between items-center gap-2">
+              <div className="flex justify-between items-baseline gap-3">
                 <div className="flex items-center gap-1.5">
                   <div
                     className="w-2 h-2 rounded-full flex-shrink-0"
@@ -62,13 +62,18 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                     2022
                   </span>
                 </div>
-                <span className="font-medium text-xs" style={{ color: "var(--foreground)" }}>
-                  {show2022 && !show2024 ? species.count_2022 : `${species.per_hour_2022.toFixed(2)} /hr`}
-                </span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-bold text-xs" style={{ color: "var(--foreground)" }}>
+                    {species.count_2022}
+                  </span>
+                  <span className="text-[10px] opacity-60" style={{ color: "var(--foreground)" }}>
+                    ({species.per_hour_2022.toFixed(2)}/hr)
+                  </span>
+                </div>
               </div>
             )}
             {show2024 && (
-              <div className="flex justify-between items-center gap-2">
+              <div className="flex justify-between items-baseline gap-3">
                 <div className="flex items-center gap-1.5">
                   <div
                     className="w-2 h-2 rounded-full flex-shrink-0"
@@ -78,14 +83,19 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                     2024
                   </span>
                 </div>
-                <span className="font-medium text-xs" style={{ color: "var(--foreground)" }}>
-                  {!show2022 && show2024 ? species.count_2024 : `${species.per_hour_2024.toFixed(2)} /hr`}
-                </span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-bold text-xs" style={{ color: "var(--foreground)" }}>
+                    {species.count_2024}
+                  </span>
+                  <span className="text-[10px] opacity-60" style={{ color: "var(--foreground)" }}>
+                    ({species.per_hour_2024.toFixed(2)}/hr)
+                  </span>
+                </div>
               </div>
             )}
             {show2022 && show2024 && (
               <div
-                className="flex justify-between items-center mt-1 pt-1 border-t"
+                className="flex justify-between items-center mt-1.5 pt-1.5 border-t"
                 style={{ borderColor: "var(--foreground)" }}
               >
                 <span className="text-xs" style={{ color: "var(--foreground)" }}>
@@ -102,7 +112,7 @@ const BirdPopulationCircle = ({ species, categoryMaxValue, show2022, show2024 })
                         : "var(--foreground)",
                   }}
                 >
-                  {changeDisplay}
+                  {changeDisplay}%
                 </span>
               </div>
             )}
