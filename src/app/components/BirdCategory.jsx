@@ -464,7 +464,8 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                   style={{ gridTemplateColumns: "repeat(5, 1fr)" }}
                 >
                   {category.species
-                    .filter((_, birdIndex) => {
+                    .map((bird, birdIndex) => ({ bird, birdIndex }))
+                    .filter(({ birdIndex }) => {
                       // Get the indices of birds currently showing in carousel
                       const currentlyShowing = [];
                       let birdCount = 0;
@@ -478,7 +479,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                       // Only show birds NOT in carousel
                       return !currentlyShowing.includes(birdIndex);
                     })
-                    .map((bird, filteredIndex) => {
+                    .map(({ bird, birdIndex }) => {
                       const isZeroCount = (show2022 && !show2024 && bird.count_2022 === 0) ||
                                          (!show2022 && show2024 && bird.count_2024 === 0);
                       // Random delay between 0ms and 400ms for staggered pop-in effect
@@ -486,7 +487,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
 
                       return (
                         <Box
-                          key={`expanded-bird-${category.category_id}-${bird.name}`}
+                          key={`expanded-bird-${category.category_id}-${birdIndex}`}
                           style={{
                             backgroundColor: "var(--background)",
                             aspectRatio: "1 / 1",
@@ -501,7 +502,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                           }}
                         >
                           <BirdPopulationCircle
-                            key={`expanded-circle-${category.category_id}-${bird.name}`}
+                            key={`expanded-circle-${category.category_id}-${birdIndex}`}
                             species={bird}
                             categoryMaxValue={globalMaxValue}
                             show2022={show2022}
