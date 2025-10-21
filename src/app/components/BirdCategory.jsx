@@ -391,13 +391,13 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                               </Text>
 
                               {/* Carousel page dots - aligned with species text */}
-                              {hasCarousel && !isExpanded && (
+                              {!isExpanded && (
                                 <Box style={{
                                   display: "flex",
                                   gap: "0.25rem",
                                   alignItems: "center"
                                 }}>
-                                  {Array.from({ length: Math.ceil(category.species.length / 4) }).map((_, dotIndex) => (
+                                  {Array.from({ length: hasCarousel ? totalPages : 1 }).map((_, dotIndex) => (
                                     <Box
                                       key={`dot-${dotIndex}`}
                                       style={{
@@ -405,7 +405,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                                         height: "5px",
                                         borderRadius: "50%",
                                         backgroundColor: showFilledState ? "var(--background)" : "var(--foreground)",
-                                        opacity: Math.floor(currentBirdIndex / 4) === dotIndex ? 1 : 0.3,
+                                        opacity: hasCarousel ? (currentPage === dotIndex ? 1 : 0.3) : 1,
                                         transition: "opacity 0.3s ease"
                                       }}
                                     />
