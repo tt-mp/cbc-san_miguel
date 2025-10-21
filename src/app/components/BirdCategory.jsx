@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Box, Grid, Text, IconButton } from "@radix-ui/themes";
-import { ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+import { ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 import data from "../../data/cbc_2022-2024.json";
 import BirdPopulationCircle from "./BirdPopulationCircle";
 
@@ -390,7 +390,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                                   : `${category.species_count} species`}
                               </Text>
 
-                              {/* Carousel page dots - aligned with species text */}
+                              {/* Pagination dots */}
                               {!isExpanded && (
                                 <Box style={{
                                   display: "flex",
