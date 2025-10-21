@@ -41,9 +41,9 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
   const handlePrevious = (categoryIndex) => {
     setCurrentIndices((prev) => {
       const newIndices = [...prev];
-      const totalBirds = categories[categoryIndex].species.length;
-      newIndices[categoryIndex] =
-        (prev[categoryIndex] - 1 + totalBirds) % totalBirds;
+      const currentPage = Math.floor(prev[categoryIndex] / 4);
+      const newPage = Math.max(0, currentPage - 1);
+      newIndices[categoryIndex] = newPage * 4;
       return newIndices;
     });
   };
@@ -52,7 +52,10 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
     setCurrentIndices((prev) => {
       const newIndices = [...prev];
       const totalBirds = categories[categoryIndex].species.length;
-      newIndices[categoryIndex] = (prev[categoryIndex] + 1) % totalBirds;
+      const totalPages = Math.ceil(totalBirds / 4);
+      const currentPage = Math.floor(prev[categoryIndex] / 4);
+      const newPage = Math.min(totalPages - 1, currentPage + 1);
+      newIndices[categoryIndex] = newPage * 4;
       return newIndices;
     });
   };
@@ -136,6 +139,12 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
 
         const hasCarousel = category.species.length > 4;
 
+        // Calculate pagination state
+        const totalPages = Math.ceil(category.species.length / 4);
+        const currentPage = Math.floor(currentBirdIndex / 4);
+        const isFirstPage = currentPage === 0;
+        const isLastPage = currentPage === totalPages - 1;
+
         // Get pre-calculated category percent change
         const categoryChange = category.categoryChange;
         const categoryChangeDisplay = categoryChange > 0 ? `+${categoryChange.toFixed(0)}%` : `${categoryChange.toFixed(0)}%`;
@@ -176,13 +185,17 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
           birds[categoryIndex] = null;
 
           if (hasCarousel) {
-            // Fill all 4 positions with carousel
+            // Fill available positions with birds from current page (no wrapping)
             let birdCount = 0;
             for (let i = 0; i < 5; i++) {
               if (i !== categoryIndex) {
-                const birdIndex =
-                  (currentBirdIndex + birdCount) % category.species.length;
-                birds[i] = category.species[birdIndex];
+                const birdIndex = currentBirdIndex + birdCount;
+                // Only show bird if it exists (don't wrap around)
+                if (birdIndex < category.species.length) {
+                  birds[i] = category.species[birdIndex];
+                } else {
+                  birds[i] = null;
+                }
                 birdCount++;
               }
             }
@@ -256,10 +269,15 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                     variant="ghost"
                     onClick={(e) => {
                       e.stopPropagation();
-                      handlePrevious(index);
+                      if (!isFirstPage) handlePrevious(index);
                     }}
                     size="3"
-                    style={{ cursor: "pointer", color: "var(--foreground)" }}
+                    disabled={isFirstPage}
+                    style={{
+                      cursor: isFirstPage ? "not-allowed" : "pointer",
+                      color: "var(--foreground)",
+                      opacity: isFirstPage ? 0.3 : 1
+                    }}
                   >
                     <ChevronLeftIcon width="24" height="24" />
                   </IconButton>
@@ -351,23 +369,50 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                                 {categoryMetric.display}
                               </Text>
                             )}
-                            <Text
-                              size="1"
-                              style={{
-                                fontSize: "0.75rem",
-                                opacity: 0.7,
-                                color: showFilledState ? "var(--background)" : "var(--foreground)",
-                                transition: "color 0.3s ease"
-                              }}
-                            >
-                              {!hasCarousel && isHovered
-                                ? "That's all!"
-                                : hasCarousel && isHovered && !isExpanded
-                                ? `Click to see expand`
-                                : hasCarousel && isHovered && isExpanded
-                                ? "Click to see collapse"
-                                : `${category.species_count} species`}
-                            </Text>
+
+                            {/* Species text and carousel dots */}
+                            <Box style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "space-between" }}>
+                              <Text
+                                size="1"
+                                style={{
+                                  fontSize: "0.75rem",
+                                  opacity: 0.7,
+                                  color: showFilledState ? "var(--background)" : "var(--foreground)",
+                                  transition: "color 0.3s ease"
+                                }}
+                              >
+                                {!hasCarousel && isHovered
+                                  ? "That's all!"
+                                  : hasCarousel && isHovered && !isExpanded
+                                  ? `Click to see expand`
+                                  : hasCarousel && isHovered && isExpanded
+                                  ? "Click to see collapse"
+                                  : `${category.species_count} species`}
+                              </Text>
+
+                              {/* Carousel page dots - aligned with species text */}
+                              {hasCarousel && !isExpanded && (
+                                <Box style={{
+                                  display: "flex",
+                                  gap: "0.375rem",
+                                  alignItems: "center"
+                                }}>
+                                  {Array.from({ length: Math.ceil(category.species.length / 4) }).map((_, dotIndex) => (
+                                    <Box
+                                      key={`dot-${dotIndex}`}
+                                      style={{
+                                        width: "5px",
+                                        height: "5px",
+                                        borderRadius: "50%",
+                                        backgroundColor: showFilledState ? "var(--background)" : "var(--foreground)",
+                                        opacity: Math.floor(currentBirdIndex / 4) === dotIndex ? 1 : 0.3,
+                                        transition: "opacity 0.3s ease"
+                                      }}
+                                    />
+                                  ))}
+                                </Box>
+                              )}
+                            </Box>
                           </Box>
                         </Box>
                       );
@@ -434,10 +479,15 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                     variant="ghost"
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleNext(index);
+                      if (!isLastPage) handleNext(index);
                     }}
                     size="3"
-                    style={{ cursor: "pointer", color: "var(--foreground)" }}
+                    disabled={isLastPage}
+                    style={{
+                      cursor: isLastPage ? "not-allowed" : "pointer",
+                      color: "var(--foreground)",
+                      opacity: isLastPage ? 0.3 : 1
+                    }}
                   >
                     <ChevronRightIcon width="24" height="24" />
                   </IconButton>

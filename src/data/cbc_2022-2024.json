@@ -5,7 +5,7 @@
       "initial": "2022-01-05",
       "followup": "2024-01-04"
     },
-    "total_species": 113,
+    "total_species": 112,
     "total_birds_observed": {
       "2022": 1262,
       "2024": 1936,
@@ -33,7 +33,7 @@
       "total_count_2022": 238,
       "total_count_2024": 1167,
       "percent_change": 390,
-      "species_count": 8,
+      "species_count": 7,
       "species": [
         {
           "name": "Great Blue Heron",
@@ -62,18 +62,10 @@
         {
           "name": "Cattle Egret",
           "count_2022": 85,
-          "count_2024": 0,
-          "per_hour_2022": 21.25,
-          "per_hour_2024": 0,
-          "change": -21.25
-        },
-        {
-          "name": "Cattle Egret (Western)",
-          "count_2022": 0,
           "count_2024": 90,
-          "per_hour_2022": 0,
+          "per_hour_2022": 21.25,
           "per_hour_2024": 22.5,
-          "change": 22.5
+          "change": 1.25
         },
         {
           "name": "Black-crowned Night-Heron",

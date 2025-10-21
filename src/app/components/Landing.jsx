@@ -76,7 +76,7 @@ export default function Landing() {
         }}
       >
         <Flex gap="3" align="center">
-          <Text size="3" weight="bold">Christmas Bird Count: 113 Species in San Miguel de Allende</Text>
+          <Text size="3" weight="bold">Christmas Bird Count: 112 Species in San Miguel de Allende</Text>
 
           {/* Dark mode toggle */}
           <Box
