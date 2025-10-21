@@ -384,9 +384,9 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                                 {!hasCarousel && isHovered
                                   ? "That's all!"
                                   : hasCarousel && isHovered && !isExpanded
-                                  ? `Click to see expand`
+                                  ? `Click to expand`
                                   : hasCarousel && isHovered && isExpanded
-                                  ? "Click to see collapse"
+                                  ? "Click to collapse"
                                   : `${category.species_count} species`}
                               </Text>
 
