@@ -394,7 +394,7 @@ export default function BirdCategory({ show2022, show2024, expandAll, setExpandA
                               {hasCarousel && !isExpanded && (
                                 <Box style={{
                                   display: "flex",
-                                  gap: "0.375rem",
+                                  gap: "0.25rem",
                                   alignItems: "center"
                                 }}>
                                   {Array.from({ length: Math.ceil(category.species.length / 4) }).map((_, dotIndex) => (
